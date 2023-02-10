@@ -1,3 +1,4 @@
+import { Outlet } from 'react-router-dom';
 import { Flex, Box } from '@chakra-ui/react';
 
 import Header from './Header';
@@ -11,7 +12,9 @@ function Layout({ children }: IProps) {
   return (
     <Flex flexDirection='column'>
       <Header />
-      <Box p={4}>{children}</Box>
+      <Box p={4}>
+        <Outlet />
+      </Box>
       <Footer />
     </Flex>
   );
