@@ -12,7 +12,7 @@ function Layout({ children }: IProps) {
   return (
     <Flex flexDirection='column'>
       <Header />
-      <Box p={4}>
+      <Box>
         <Outlet />
       </Box>
       <Footer />

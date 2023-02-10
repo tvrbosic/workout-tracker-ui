@@ -1,6 +1,7 @@
 # Workout Tracker Website
 Workout planning and tracking website.
-- TODO: Image credits, external APIs used
+- TODO: Image credits, external APIs used, Chakra templates credits
+- TODO: Mention implemented functionalities
 
 
 ## Usage

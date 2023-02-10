@@ -1,6 +1,6 @@
 import { useRoutes } from 'react-router-dom';
 
-import Home from '../screens/Home';
+import Home from '../screens/home/Home';
 import Layout from '../components/layout/Layout';
 
 function AppRouter() {
