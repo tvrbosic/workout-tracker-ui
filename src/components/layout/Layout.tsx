@@ -15,7 +15,7 @@ function Layout({ children }: IProps) {
       <Box>
         <Outlet />
       </Box>
-      <Footer />
+      <Footer/>
     </Flex>
   );
 }

@@ -1,12 +1,15 @@
-import Hero from './components/Hero';
-import GridListWithHeading from './components/GridListWithHeading';
+import { VStack } from '@chakra-ui/react';
 
+import Hero from './components/Hero';
+import ProductOverview from './components/ProductOverview';
+import ProductFeatures from './components/ProductFeatures';
 
 export default function Home() {
   return (
-    <>
+    <VStack spacing={12}>
       <Hero />
-      <GridListWithHeading />
-    </>
+      <ProductOverview />
+      <ProductFeatures />
+    </VStack>
   );
 }

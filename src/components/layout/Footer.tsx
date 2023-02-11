@@ -72,8 +72,9 @@ const ListHeader = ({ children }: { children: ReactNode }) => {
 export default function Footer() {
   return (
     <Box
-      bg={useColorModeValue('gray.50', 'gray.900')}
-      color={useColorModeValue('gray.700', 'gray.200')}>
+      mt={12}
+      bg={useColorModeValue('blue.800', 'blue.800')}
+      color={useColorModeValue('white.100', 'white.100')}>
       <Container as={Stack} maxW={'6xl'} py={10}>
         <SimpleGrid templateColumns={{ sm: '1fr 1fr', md: '2fr 1fr 1fr 2fr' }} spacing={8}>
           <Stack spacing={6}>
@@ -93,6 +94,7 @@ export default function Footer() {
               </SocialButton>
             </Stack>
           </Stack>
+
           <Stack align={'flex-start'}>
             <ListHeader>Company</ListHeader>
             <Link href={'#'}>About us</Link>
@@ -101,6 +103,7 @@ export default function Footer() {
             <Link href={'#'}>Pricing</Link>
             <Link href={'#'}>Testimonials</Link>
           </Stack>
+
           <Stack align={'flex-start'}>
             <ListHeader>Support</ListHeader>
             <Link href={'#'}>Help Center</Link>
@@ -109,6 +112,7 @@ export default function Footer() {
             <Link href={'#'}>Privacy Policy</Link>
             <Link href={'#'}>Satus</Link>
           </Stack>
+
           <Stack align={'flex-start'}>
             <ListHeader>Stay up to date</ListHeader>
             <Stack direction={'row'}>

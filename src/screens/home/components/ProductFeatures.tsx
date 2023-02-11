@@ -20,7 +20,7 @@ const features = Array.apply(null, Array(8)).map(function (x, i) {
   };
 });
 
-export default function GridListWithHeading() {
+export default function ProductFeatures() {
   return (
     <Box p={4}>
       <Stack spacing={4} as={Container} maxW={'3xl'} textAlign={'center'}>

@@ -4,6 +4,7 @@ import {
   Flex,
   Avatar,
   HStack,
+  Text,
   Link,
   IconButton,
   Button,
@@ -20,14 +21,23 @@ import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 
 const Links = ['Dashboard', 'Projects', 'Team'];
 
+const Logo = () => {
+  return (
+    <Flex>
+      <Text color={'aquamarine.300'}>Workout</Text>
+      <Text color={'white.100'}>Tracker</Text>
+    </Flex>
+  );
+};
+
 const NavLink = ({ children }: { children: ReactNode }) => (
   <Link
     px={2}
     py={1}
     rounded={'md'}
+    color={useColorModeValue('white.100', 'white.100')}
     _hover={{
-      textDecoration: 'none',
-      bg: useColorModeValue('gray.200', 'gray.700'),
+      textDecoration: 'underline',
     }}
     href={'#'}>
     {children}
@@ -39,7 +49,7 @@ export default function Header() {
 
   return (
     <>
-      <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
+      <Box bg={useColorModeValue('blue.800', 'blue.800')} px={4}>
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
           <IconButton
             size={'md'}
@@ -48,14 +58,21 @@ export default function Header() {
             display={{ md: 'none' }}
             onClick={isOpen ? onClose : onOpen}
           />
-          <HStack spacing={8} alignItems={'center'}>
-            <Box>Logo</Box>
-            <HStack as={'nav'} spacing={4} display={{ base: 'none', md: 'flex' }}>
+
+          <HStack spacing={8} flexGrow={1} alignItems={'center'}>
+            <Logo />
+            <HStack
+              as={'nav'}
+              spacing={4}
+              flexGrow={1}
+              justifyContent={'center'}
+              display={{ base: 'none', md: 'flex' }}>
               {Links.map((link) => (
                 <NavLink key={link}>{link}</NavLink>
               ))}
             </HStack>
           </HStack>
+
           <Flex alignItems={'center'}>
             <Menu>
               <MenuButton as={Button} rounded={'full'} variant={'link'} cursor={'pointer'} minW={0}>
@@ -66,6 +83,7 @@ export default function Header() {
                   }
                 />
               </MenuButton>
+
               <MenuList>
                 <MenuItem>Link 1</MenuItem>
                 <MenuItem>Link 2</MenuItem>
