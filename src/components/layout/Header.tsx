@@ -14,7 +14,6 @@ import {
   MenuItem,
   MenuDivider,
   useDisclosure,
-  useColorModeValue,
   Stack,
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
@@ -35,7 +34,7 @@ const NavLink = ({ children }: { children: ReactNode }) => (
     px={2}
     py={1}
     rounded={'md'}
-    color={useColorModeValue('white.100', 'white.100')}
+    color={'white.100'}
     _hover={{
       textDecoration: 'underline',
     }}
@@ -49,7 +48,7 @@ export default function Header() {
 
   return (
     <>
-      <Box bg={useColorModeValue('blue.800', 'blue.800')} px={4}>
+      <Box bg={'blue.900'} px={4}>
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
           <IconButton
             size={'md'}

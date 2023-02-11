@@ -9,7 +9,6 @@ import {
   VisuallyHidden,
   Input,
   IconButton,
-  useColorModeValue,
 } from '@chakra-ui/react';
 import { ReactNode } from 'react';
 import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
@@ -41,7 +40,7 @@ const SocialButton = ({
 }) => {
   return (
     <chakra.button
-      bg={useColorModeValue('blackAlpha.100', 'whiteAlpha.100')}
+      bg='blackAlpha.10'
       rounded={'full'}
       w={8}
       h={8}
@@ -53,7 +52,7 @@ const SocialButton = ({
       justifyContent={'center'}
       transition={'background 0.3s ease'}
       _hover={{
-        bg: useColorModeValue('blackAlpha.200', 'whiteAlpha.200'),
+        bg: 'blackAlpha.200',
       }}>
       <VisuallyHidden>{label}</VisuallyHidden>
       {children}
@@ -72,14 +71,14 @@ const ListHeader = ({ children }: { children: ReactNode }) => {
 export default function Footer() {
   return (
     <Box
-      mt={12}
-      bg={useColorModeValue('blue.800', 'blue.800')}
-      color={useColorModeValue('white.100', 'white.100')}>
+      mt={16}
+      bg={'blue.900'}
+      color={'white.100'}>
       <Container as={Stack} maxW={'6xl'} py={10}>
         <SimpleGrid templateColumns={{ sm: '1fr 1fr', md: '2fr 1fr 1fr 2fr' }} spacing={8}>
           <Stack spacing={6}>
             <Box>
-              <Logo color={useColorModeValue('gray.700', 'white')} />
+              <Logo color={'gray.700'}/>
             </Box>
             <Text fontSize={'sm'}>© 2022 Chakra Templates. All rights reserved</Text>
             <Stack direction={'row'} spacing={6}>
@@ -118,15 +117,15 @@ export default function Footer() {
             <Stack direction={'row'}>
               <Input
                 placeholder={'Your email address'}
-                bg={useColorModeValue('blackAlpha.100', 'whiteAlpha.100')}
+                bg={'whiteAlpha.100'}
                 border={0}
                 _focus={{
-                  bg: 'whiteAlpha.300',
+                  bg: 'whiteAlpha.200',
                 }}
               />
               <IconButton
-                bg={useColorModeValue('green.400', 'green.800')}
-                color={useColorModeValue('white', 'gray.800')}
+                bg={'green.400'}
+                color={'white'}
                 _hover={{
                   bg: 'green.600',
                 }}

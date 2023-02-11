@@ -1,56 +1,35 @@
-import {
-  Button,
-  Flex,
-  Heading,
-  Image,
-  Stack,
-  Text,
-  useBreakpointValue,
-  useColorModeValue,
-} from '@chakra-ui/react';
+import { Button, Flex, Box, Heading, Image, Stack, Text } from '@chakra-ui/react';
+
+import HeroImage from '../../../assets/images/unsplash-sven-mieke-1.jpg';
 
 export default function Hero() {
   return (
-    <Stack
-      minH={'100vh'}
-      direction={{ base: 'column', md: 'row' }}
-      bg={useColorModeValue('blue.800', 'blue.800')}>
-      
-      <Flex flex={1} px={{md: 10}} pt={{md: 20}} pb={{md: 32}}>
-        <Image
-          alt={'Login Image'}
-          objectFit={'cover'}
-          borderRadius={{md: 32}}
-          src={
-            'https://images.unsplash.com/photo-1527689368864-3a821dbccc34?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
-          }
-        />
-      </Flex>
-
-      <Flex p={8} flex={1} align={'center'} justify={'center'}>
+    <Stack minH={'100vh'} direction={{ base: 'column', md: 'row' }} bg={'blue.800'}>
+      <Flex p={8} flex={1} align={'center'} justify={'center'} flexGrow={3}>
         <Stack spacing={6} w={'full'} maxW={'lg'}>
           <Heading fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }}>
-            <Text
-              as={'span'}
-              position={'relative'}
-              color={useColorModeValue('white.100', 'white.100')}>
-              Freelance
+            <Text as={'span'} position={'relative'} color={'white.100'} fontWeight={'normal'}>
+              Train with
             </Text>
             <br />{' '}
-            <Text color={'aquamarine.300'} as={'span'}>
-              Design Projects
-            </Text>{' '}
+            <Flex>
+              <Text color={'aquamarine.300'} as={'span'}>
+                Workout
+              </Text>
+              <Text color={'white.100'}>Tracker</Text>
+            </Flex>
           </Heading>
 
           <Text fontSize={{ base: 'md', lg: 'lg' }} color={'white.300'}>
-            The project board is an exclusive resource for contract work. It's perfect for
-            freelancers, agencies, and moonlighters.
+            WorkoutTracker is free web platform designed for fitness enthusiast, personal trainers and casual athletes which enables you to manage and plan your workouts, create training programs and track your progress. Sign up today and take advantage of WorkoutTracker to kick-start your gains.
           </Text>
 
           <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
             <Button
               rounded={'full'}
               bg={'aquamarine.300'}
+              px={10}
+              py={6}
               color={'blue.800'}
               _hover={{
                 bg: 'aquamarine.500',
@@ -59,6 +38,17 @@ export default function Hero() {
             </Button>
           </Stack>
         </Stack>
+      </Flex>
+
+      <Flex flex={1} position={'relative'} flexGrow={5}>
+        <Image alt={'Login Image'} objectFit={'cover'} src={HeroImage} />
+        <Box
+          width={'100%'}
+          height={'100%'}
+          bgGradient='linear(270deg, white.transparent 75%, blue.800)'
+          position={'absolute'}
+          top={0}
+          left={0}></Box>
       </Flex>
     </Stack>
   );
