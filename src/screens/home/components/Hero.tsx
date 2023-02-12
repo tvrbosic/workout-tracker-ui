@@ -29,7 +29,9 @@ export default function Hero() {
           </Text>
 
           <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
-            <Button>Register Today</Button>
+            <Button px={10} py={6} fontSize="md">
+              Register Today
+            </Button>
           </Stack>
         </Stack>
       </Flex>

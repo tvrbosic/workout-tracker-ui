@@ -6,6 +6,7 @@ import {
   HStack,
   Text,
   Link,
+  Button as CButton,
   IconButton,
   Menu,
   MenuButton,
@@ -90,7 +91,7 @@ export default function Header() {
             {authCtx.user ? (
               <Menu>
                 <MenuButton
-                  as={Button}
+                  as={CButton}
                   rounded={'full'}
                   variant={'link'}
                   cursor={'pointer'}

@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 
 import { IUser } from '../ts/IUser';
 import { useLocalStorage } from '../hooks/useLocalStorage';
@@ -55,10 +55,15 @@ export function AuthContextProvider({ ...children }: IAuthProviderProps) {
   };
 
   // Prepare context object which will be used and accessed throughout application
-  const authContextObject = {
-    user: appUser,
-    login,
-    logout,
-  };
+  // Memoize authContextObject to prevent unnecessary re-renders
+  const authContextObject = useMemo(
+    () => ({
+      user: appUser,
+      login,
+      logout,
+    }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [appUser]
+  );
   return <AuthContext.Provider value={authContextObject} {...children} />;
 }
