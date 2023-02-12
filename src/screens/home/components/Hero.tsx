@@ -1,6 +1,7 @@
-import { Button, Flex, Box, Heading, Image, Stack, Text } from '@chakra-ui/react';
+import { Flex, Heading, Image, Stack, Text } from '@chakra-ui/react';
 
 import HeroImage from '../../../assets/images/unsplash-sven-mieke-1.jpg';
+import Button from '../../../components/Button';
 
 export default function Hero() {
   return (
@@ -28,18 +29,7 @@ export default function Hero() {
           </Text>
 
           <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
-            <Button
-              rounded={'full'}
-              bg={'aquamarine.300'}
-              px={10}
-              py={6}
-              color={'blue.800'}
-              _hover={{
-                bg: 'aquamarine.500',
-              }}
-            >
-              Register Today
-            </Button>
+            <Button>Register Today</Button>
           </Stack>
         </Stack>
       </Flex>
