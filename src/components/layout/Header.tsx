@@ -22,7 +22,7 @@ const Links = ['Dashboard', 'Projects', 'Team'];
 
 const Logo = () => {
   return (
-    <Flex>
+    <Flex fontSize={18} fontWeight="bold">
       <Text color={'aquamarine.300'}>Workout</Text>
       <Text color={'white.100'}>Tracker</Text>
     </Flex>
@@ -38,7 +38,8 @@ const NavLink = ({ children }: { children: ReactNode }) => (
     _hover={{
       textDecoration: 'underline',
     }}
-    href={'#'}>
+    href={'#'}
+  >
     {children}
   </Link>
 );
@@ -49,7 +50,7 @@ export default function Header() {
   return (
     <>
       <Box bg={'blue.900'} px={4}>
-        <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
+        <Flex minH={'9dvh'} alignItems={'center'} justifyContent={'space-between'}>
           <IconButton
             size={'md'}
             icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
@@ -65,7 +66,8 @@ export default function Header() {
               spacing={4}
               flexGrow={1}
               justifyContent={'center'}
-              display={{ base: 'none', md: 'flex' }}>
+              display={{ base: 'none', md: 'flex' }}
+            >
               {Links.map((link) => (
                 <NavLink key={link}>{link}</NavLink>
               ))}
