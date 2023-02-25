@@ -8,7 +8,7 @@ Workout planning and tracking website.
 ## Usage
 
 1. Clone repository: `git clone git@github.com:tvrbosic/workout-tracker-website.git`
-2. Install npm packages: `cd robohash-memory-game && npm install`
+2. Install npm packages: `cd workout-tracker-website && npm install`
 3. Run json-server: `npx json-server-auth db.json --port 3001 --delay 300`
 4. Run app: `npm start`
 

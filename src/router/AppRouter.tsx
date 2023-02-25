@@ -7,7 +7,7 @@ function AppRouter() {
   let element = useRoutes([
     {
       path: '/',
-      element: <Layout>Hello world!</Layout>,
+      element: <Layout />,
       children: [
         { index: true, element: <Home /> },
         { path: 'route', element: <div>Another route placeholder</div> },

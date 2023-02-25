@@ -4,18 +4,14 @@ import { Flex, Box } from '@chakra-ui/react';
 import Header from './Header';
 import Footer from './Footer';
 
-interface IProps {
-  children: React.ReactNode;
-}
-
-function Layout({ children }: IProps) {
+function Layout() {
   return (
-    <Flex flexDirection='column'>
+    <Flex flexDirection="column">
       <Header />
       <Box>
         <Outlet />
       </Box>
-      <Footer/>
+      <Footer />
     </Flex>
   );
 }

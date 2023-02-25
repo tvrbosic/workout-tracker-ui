@@ -1,24 +1,24 @@
 import { AxiosInstance } from 'axios';
 
-import { ILoginCredentials } from '../ts/ILoginCredentials';
+import { ILoginCredentials } from '../ts/definitions';
 
 export default class Api {
-  authclient: AxiosInstance;
-  dataClient: AxiosInstance;
+  client: AxiosInstance;
+  externalDataClient: AxiosInstance;
 
-  constructor(axiosAuthObj: AxiosInstance, axiosDataObj: AxiosInstance) {
-    this.authclient = axiosAuthObj;
-    this.dataClient = axiosDataObj;
+  constructor(primaryAxiosClient: AxiosInstance, externalDataAxiosClient: AxiosInstance) {
+    this.client = primaryAxiosClient;
+    this.externalDataClient = externalDataAxiosClient;
   }
 
-  setAuthorizationHeader = (token: string) => {
-    this.authclient.defaults.headers.common.Authorization = `Bearer ${token}`;
-    // Not needed for used data API
-    // this.dataClient.defaults.headers.common.Authorization = `Bearer ${token}`;
+  setAuthorizationHeaders = (token: string) => {
+    this.client.defaults.headers.common.Authorization = `Bearer ${token}`;
+    // External data client does not require authorization
+    // this.externalDataClient.defaults.headers.common.Authorization = `Bearer ${token}`;
   };
 
   logInUser = async (credentials: ILoginCredentials) => {
-    const resp = await this.authclient.post('v1/client/login', credentials);
+    const resp = await this.client.post('v1/client/login', credentials);
     return resp.data;
   };
 }

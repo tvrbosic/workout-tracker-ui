@@ -1,19 +1,21 @@
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 
-import { IUser } from '../ts/IUser';
+import { IUser } from '../ts/definitions';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import parseJwt from '../utils/parseJwt';
 
 interface IAuthContext {
+  token: string;
   user: IUser | null;
-  login: (user: IUser) => void;
-  logout: (user: IUser) => void;
+  setAuthToken: (token: string) => void;
+  clearAuthToken: () => void;
 }
 
 const AuthContext = createContext<IAuthContext>({
+  token: '',
   user: null,
-  login: () => {},
-  logout: () => {},
+  setAuthToken: () => {},
+  clearAuthToken: () => {},
 });
 
 // Export custom hook to use AuthContext
@@ -27,6 +29,7 @@ interface IAuthProviderProps {
 export function AuthContextProvider({ ...children }: IAuthProviderProps) {
   const localStorageController = useLocalStorage();
   const [appUser, setAppUser] = useState<IUser | null>(null);
+  const [token, setToken] = useState<string>('');
 
   // On application start check if user token already exists in local storage
   // Parse it and set logged in user
@@ -39,18 +42,20 @@ export function AuthContextProvider({ ...children }: IAuthProviderProps) {
   }, [localStorageController]);
 
   // Set user to state and local storage
-  const login = (user: IUser) => {
-    // TODO: Get jwt from backend, decode it to get user while store token to localStorage
-    // TODO: Token parameter
-    // TODO: Decode token to get user
-    setAppUser(user);
-    // TODO: Set token, not user
-    localStorageController.setItem('token', JSON.stringify(user));
+  const setAuthToken = (jwtToken: string) => {
+    // TODO:
+    // Add token as function param
+    // Set token to local storage
+    // Decode token to get user
+    //setAppUser(user);
+    setToken(jwtToken);
+    localStorageController.setItem('token', JSON.stringify(token)); // TODO: replace user with token
   };
 
-  // Clear user from state and local storage
-  const logout = (user: IUser) => {
+  // Clear user from state and token from local storage
+  const clearAuthToken = () => {
     setAppUser(null);
+    setToken('');
     localStorageController.setItem('token', '');
   };
 
@@ -58,9 +63,10 @@ export function AuthContextProvider({ ...children }: IAuthProviderProps) {
   // Memoize authContextObject to prevent unnecessary re-renders
   const authContextObject = useMemo(
     () => ({
+      token,
       user: appUser,
-      login,
-      logout,
+      setAuthToken,
+      clearAuthToken,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [appUser]
