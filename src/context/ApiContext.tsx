@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useLayoutEffect, useMemo, useState } from 'react';
 
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 import Api from '../Api';
 import { useAuthContext } from './AuthContext';
 

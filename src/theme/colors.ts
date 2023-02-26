@@ -1,6 +1,5 @@
 const colors = {
   white: {
-    transparent: 'rgba(255, 255, 255, 0)',
     100: '#ffffff',
     200: '#dbdbdb',
     300: '#cecece',
@@ -19,7 +18,6 @@ const colors = {
     300: '#7a7a7a',
     400: '#54595f',
   },
-  
 };
 
 export default colors;

@@ -1,44 +1,55 @@
-import { Flex, Heading, Image, Stack, Text } from '@chakra-ui/react';
+import { Stack, Flex, Heading, Text, VStack } from '@chakra-ui/react';
 
 import HeroImage from '../../../assets/images/unsplash-sven-mieke-1.jpg';
 import Button from '../../../components/Button';
 
-export default function Hero() {
+export default function WithBackgroundImage() {
   return (
-    <Stack minH={'91dvh'} direction={{ base: 'column', md: 'row' }} bg={'blue.800'}>
-      <Flex p={8} flex={1} align={'center'} justify={'center'} flexGrow={3}>
-        <Stack spacing={6} w={'full'} maxW={'lg'}>
-          <Heading fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }}>
-            <Text as={'span'} position={'relative'} color={'white.100'} fontWeight={'normal'}>
-              Train with
+    <Flex
+      w={'full'}
+      h={'100vh'}
+      backgroundImage={HeroImage}
+      backgroundSize={'cover'}
+      backgroundPosition={'center center'}
+    >
+      <VStack
+        w={'full'}
+        justify={'center'}
+        px={{ base: 4, md: 8 }}
+        bgGradient={'linear(to-b, transparent 5%, blackAlpha.700, transparent 95%)'}
+      >
+        <Stack maxW={'2xl'} alignItems={'center'} spacing={10}>
+          <Heading fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }} textAlign="center">
+            <Text as={'span'} color={'white.100'}>
+              The&nbsp;
             </Text>
-            <br />{' '}
-            <Flex>
-              <Text color={'aquamarine.300'} as={'span'}>
-                Workout
-              </Text>
-              <Text color={'white.100'}>Tracker</Text>
-            </Flex>
+            <Text as={'span'} color={'aquamarine.300'}>
+              body&nbsp;
+            </Text>
+            <Text as={'span'} color={'white.100'}>
+              achieves what the&nbsp;
+            </Text>
+            <Text as={'span'} color={'aquamarine.300'}>
+              mind&nbsp;
+            </Text>
+            <Text as={'span'} color={'white.100'}>
+              believes.
+            </Text>
           </Heading>
-
-          <Text fontSize={{ base: 'md', lg: 'lg' }} color={'white.300'}>
+          <Text fontSize={{ base: 'lg', lg: 'xl' }} color={'white.300'} align="center">
             WorkoutTracker is free web platform designed for fitness enthusiast, personal trainers
             and casual athletes which enables you to manage and plan your workouts, create training
             programs and track your progress. Sign up today and take advantage of WorkoutTracker to
-            kick-start your gains.
+            kick-start your training.
           </Text>
 
-          <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
+          <Stack direction={'row'}>
             <Button px={10} py={6} fontSize="md">
               Register Today
             </Button>
           </Stack>
         </Stack>
-      </Flex>
-
-      <Flex flex={1} flexGrow={4}>
-        <Image alt={'Login Image'} objectFit={'cover'} src={HeroImage} />
-      </Flex>
-    </Stack>
+      </VStack>
+    </Flex>
   );
 }

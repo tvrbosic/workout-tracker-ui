@@ -16,8 +16,8 @@ export default class Api {
     // NOTE: External data client does not require authorization
   };
 
-  logInUser = async (credentials: ILoginCredentials) => {
-    const resp = await this.client.post('v1/client/login', credentials);
-    return resp.data;
+  loginUser = async (credentials: ILoginCredentials) => {
+    const response = await this.client.post('/login', credentials);
+    return response.data;
   };
 }
