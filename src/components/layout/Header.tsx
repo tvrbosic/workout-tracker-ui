@@ -1,11 +1,9 @@
-import { ReactNode } from 'react';
+import { useState, useEffect } from 'react';
 import {
   Box,
   Flex,
   Avatar,
   HStack,
-  Text,
-  Link,
   Button as CButton,
   IconButton,
   Menu,
@@ -19,38 +17,17 @@ import {
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 
 import { useAuthContext } from '../../context/AuthContext';
+import Logo from '../Logo';
+import NavLink from '../NavLink';
 import Button from '../Button';
 
 const PublicMenu = ['Home', 'About', 'Contact'];
 const LoggedUserMenu = ['Dashboard', 'Calendar', 'Workouts', 'Programs'];
 
-const Logo = () => {
-  return (
-    <Flex fontSize={18} fontWeight="bold">
-      <Text color={'aquamarine.300'}>Workout</Text>
-      <Text color={'white.100'}>Tracker</Text>
-    </Flex>
-  );
-};
-
-const NavLink = ({ children }: { children: ReactNode }) => (
-  <Link
-    px={2}
-    py={1}
-    rounded={'md'}
-    color={'white.100'}
-    _hover={{
-      textDecoration: 'underline',
-    }}
-    href={'#'}
-  >
-    {children}
-  </Link>
-);
-
 export default function Header() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const authCtx = useAuthContext();
+  const [bgColor, setBgColor] = useState('transparent');
 
   const NavMenu = () => {
     return (
@@ -62,9 +39,28 @@ export default function Header() {
     );
   };
 
+  const handleScroll = () => {
+    const position = window.pageYOffset;
+    if (position > 0) {
+      // Set color to a darker shade
+      setBgColor('blue.800');
+    } else {
+      // Reset color to transparent in initial position
+      setBgColor('transparent');
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    // Cleanup function to remove event listener on unmount (avoid memory leaks)
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <>
-      <Box bg={'blue.900'} px={4}>
+      <Box px={4} bg={bgColor} position="fixed" width="100%" transition={'all 200ms linear'}>
         <Flex minH={'9dvh'} alignItems={'center'} justifyContent={'space-between'}>
           <IconButton
             size={'md'}
