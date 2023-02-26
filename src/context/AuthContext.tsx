@@ -32,10 +32,10 @@ export function AuthContextProvider({ ...children }: IAuthProviderProps) {
   const [token, setToken] = useState<string>('');
 
   // On application start check if user token already exists in local storage
-  // Parse it and set logged in user
   useEffect(() => {
     const token = localStorageController.getItem('token');
     if (token) {
+      // Decode jwt token and set user data
       const user = parseJwt(token);
       setAppUser(user);
     }
@@ -43,19 +43,19 @@ export function AuthContextProvider({ ...children }: IAuthProviderProps) {
 
   // Set user to state and local storage
   const setAuthToken = (jwtToken: string) => {
-    // TODO:
-    // Add token as function param
-    // Set token to local storage
-    // Decode token to get user
-    //setAppUser(user);
+    // Set token to app
     setToken(jwtToken);
-    localStorageController.setItem('token', JSON.stringify(token)); // TODO: replace user with token
+    // Decode jwt token and set user data
+    const user = parseJwt(token);
+    setAppUser(user);
+    // Set token to local storage
+    localStorageController.setItem('token', jwtToken);
   };
 
   // Clear user from state and token from local storage
   const clearAuthToken = () => {
-    setAppUser(null);
     setToken('');
+    setAppUser(null);
     localStorageController.setItem('token', '');
   };
 

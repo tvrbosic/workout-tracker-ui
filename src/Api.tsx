@@ -1,6 +1,6 @@
 import { AxiosInstance } from 'axios';
 
-import { ILoginCredentials } from '../ts/definitions';
+import { ILoginCredentials } from './ts/definitions';
 
 export default class Api {
   client: AxiosInstance;
@@ -13,8 +13,7 @@ export default class Api {
 
   setAuthorizationHeaders = (token: string) => {
     this.client.defaults.headers.common.Authorization = `Bearer ${token}`;
-    // External data client does not require authorization
-    // this.externalDataClient.defaults.headers.common.Authorization = `Bearer ${token}`;
+    // NOTE: External data client does not require authorization
   };
 
   logInUser = async (credentials: ILoginCredentials) => {
