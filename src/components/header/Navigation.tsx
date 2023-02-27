@@ -6,7 +6,7 @@ export default function Navigation() {
   return (
     <HStack
       as={'nav'}
-      spacing={4}
+      spacing={6}
       flexGrow={1}
       justifyContent={'center'}
       display={{ base: 'none', md: 'flex' }}
