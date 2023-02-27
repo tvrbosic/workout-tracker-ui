@@ -38,9 +38,8 @@ export default function WithBackgroundImage() {
           </Heading>
           <Text fontSize={{ base: 'lg', lg: 'xl' }} color={'white.300'} align="center">
             WorkoutTracker is free web platform designed for fitness enthusiast, personal trainers
-            and casual athletes which enables you to manage and plan your workouts, create training
-            programs and track your progress. Sign up today and take advantage of WorkoutTracker to
-            kick-start your training.
+            and casual athletes. Sign up today and take advantage of WorkoutTracker to kick-start
+            your training.
           </Text>
 
           <Stack direction={'row'}>

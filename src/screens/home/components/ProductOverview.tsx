@@ -50,19 +50,19 @@ export default function ProductOverview() {
             color={'blue.400'}
             fontWeight={600}
             fontSize={'sm'}
-            bg={'blue.50'}
             p={2}
             alignSelf={'flex-start'}
-            rounded={'md'}>
-            Application overview
+            rounded={'md'}
+          >
+            Main Features
           </Text>
           <Heading>Workout programs planning and tracking</Heading>
           <Text color={'gray.500'} fontSize={'lg'}>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-            invidunt ut labore
+            WorkoutTracker enables you to manage and plan your workouts, create training programs
+            and track your progress.
           </Text>
           <Stack spacing={4} divider={<StackDivider borderColor={'gray.100'} />}>
-          <Feature
+            <Feature
               icon={<Icon as={IoCalendar} color={'purple.500'} w={5} h={5} />}
               iconBg={'purple.100'}
               text={'Workouts tracking calendar'}
