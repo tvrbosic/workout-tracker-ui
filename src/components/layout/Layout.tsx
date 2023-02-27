@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import { Flex, Box } from '@chakra-ui/react';
 
-import Header from './Header';
+import Header from '../header/Header';
 import Footer from './Footer';
 
 function Layout() {
