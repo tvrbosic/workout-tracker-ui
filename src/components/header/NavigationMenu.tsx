@@ -1,6 +1,6 @@
-import { useAuthContext } from '../../context/AuthContext';
-import routes from '../../router/routes';
-import NavLink from '../NavLink';
+import { useAuthContext } from 'context/AuthContext';
+import routes from 'router/routes';
+import NavLink from 'components/NavLink';
 
 export default function NavMenu() {
   const authCtx = useAuthContext();

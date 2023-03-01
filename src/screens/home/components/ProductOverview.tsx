@@ -12,7 +12,7 @@ import {
 import { IoAnalyticsSharp, IoBarbell, IoCalendar } from 'react-icons/io5';
 import { ReactElement } from 'react';
 
-import ProductOverviewImage from '../../../assets/images/unsplash-braden-collum-1.jpg';
+import ProductOverviewImage from 'assets/images/unsplash-braden-collum-1.jpg';
 
 interface FeatureProps {
   text: string;

@@ -1,6 +1,6 @@
 import { AxiosInstance } from 'axios';
 
-import { ILoginCredentials } from './ts/definitions';
+import { ILoginCredentials } from 'ts/definitions';
 
 export default class Api {
   client: AxiosInstance;

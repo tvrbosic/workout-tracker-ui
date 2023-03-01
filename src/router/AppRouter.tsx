@@ -1,14 +1,14 @@
 import { useRoutes } from 'react-router-dom';
 
-import routes from './routes';
-import Layout from '../components/layout/Layout';
-import Home from '../screens/home/Home';
-import About from '../screens/about/about';
-import Contact from '../screens/contact/Contact';
-import Dashboard from '../screens/dashboard/Dashboard';
-import Calendar from '../screens/calendar/Calendar';
-import Workouts from '../screens/workouts/Workouts';
-import Programs from '../screens/programs/Programs';
+import routes from 'router/routes';
+import Layout from 'components/layout/Layout';
+import Home from 'screens/home/Home';
+import About from 'screens/about/about';
+import Contact from 'screens/contact/Contact';
+import Dashboard from 'screens/dashboard/Dashboard';
+import Calendar from 'screens/calendar/Calendar';
+import Workouts from 'screens/workouts/Workouts';
+import Programs from 'screens/programs/Programs';
 
 function AppRouter() {
   let element = useRoutes([

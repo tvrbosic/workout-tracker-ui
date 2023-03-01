@@ -1,7 +1,7 @@
 import { Stack, Flex, Heading, Text, VStack } from '@chakra-ui/react';
 
-import HeroImage from '../../../assets/images/unsplash-sven-mieke-1.jpg';
-import Button from '../../../components/Button';
+import HeroImage from 'assets/images/unsplash-sven-mieke-1.jpg';
+import Button from 'components/Button';
 
 export default function WithBackgroundImage() {
   return (

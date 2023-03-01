@@ -1,6 +1,6 @@
 import { Box, Stack } from '@chakra-ui/react';
 
-import NavigationMenu from './NavigationMenu';
+import NavigationMenu from 'components/header/NavigationMenu';
 
 export default function MobileNavigation() {
   return (

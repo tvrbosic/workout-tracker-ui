@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useLayoutEffect, useMemo, useState } from 'react';
 
 import axios from 'axios';
-import Api from '../Api';
-import { useAuthContext } from './AuthContext';
+import Api from 'utils/Api';
+import { useAuthContext } from 'context/AuthContext';
 
 interface IApiContextProviderProps {
   children?: React.ReactNode;

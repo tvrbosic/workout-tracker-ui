@@ -1,8 +1,8 @@
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 
-import { IUser } from '../ts/definitions';
-import { useLocalStorage } from '../hooks/useLocalStorage';
-import parseJwt from '../utils/parseJwt';
+import { IUser } from 'ts/definitions';
+import { useLocalStorage } from 'hooks/useLocalStorage';
+import parseJwt from 'utils/parseJwt';
 
 interface IAuthContext {
   token: string;
