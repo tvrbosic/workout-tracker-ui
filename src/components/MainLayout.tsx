@@ -2,9 +2,9 @@ import { Outlet } from 'react-router-dom';
 import { Flex, Box } from '@chakra-ui/react';
 
 import Header from 'components/header/Header';
-import Footer from 'components/layout/Footer';
+import Footer from 'components/footer/Footer';
 
-function Layout() {
+function MainLayout() {
   return (
     <Flex flexDirection="column">
       <Header />
@@ -16,4 +16,4 @@ function Layout() {
   );
 }
 
-export default Layout;
+export default MainLayout;
