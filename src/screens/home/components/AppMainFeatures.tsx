@@ -10,26 +10,9 @@ import {
   Icon,
 } from '@chakra-ui/react';
 import { IoAnalyticsSharp, IoBarbell, IoCalendar } from 'react-icons/io5';
-import { ReactElement } from 'react';
 
 import ProductOverviewImage from 'assets/images/unsplash-braden-collum-1.jpg';
-
-interface FeatureProps {
-  text: string;
-  iconBg: string;
-  icon?: ReactElement;
-}
-
-const Feature = ({ text, icon, iconBg }: FeatureProps) => {
-  return (
-    <Stack direction={'row'} align={'center'}>
-      <Flex w={8} h={8} align={'center'} justify={'center'} rounded={'full'} bg={iconBg}>
-        {icon}
-      </Flex>
-      <Text fontWeight={600}>{text}</Text>
-    </Stack>
-  );
-};
+import AppFeature from 'screens/home/components/AppFeature';
 
 export default function ProductOverview() {
   return (
@@ -38,7 +21,7 @@ export default function ProductOverview() {
         <Flex>
           <Image
             rounded={'md'}
-            alt={'feature image'}
+            alt={'App features image'}
             src={ProductOverviewImage}
             objectFit={'cover'}
           />
@@ -62,17 +45,17 @@ export default function ProductOverview() {
             and track your progress.
           </Text>
           <Stack spacing={4} divider={<StackDivider borderColor={'gray.100'} />}>
-            <Feature
+            <AppFeature
               icon={<Icon as={IoCalendar} color={'purple.500'} w={5} h={5} />}
               iconBg={'purple.100'}
               text={'Workouts tracking calendar'}
             />
-            <Feature
+            <AppFeature
               icon={<Icon as={IoBarbell} color={'green.500'} w={5} h={5} />}
               iconBg={'green.100'}
               text={'Browse extensive exercises database'}
             />
-            <Feature
+            <AppFeature
               icon={<Icon as={IoAnalyticsSharp} color={'yellow.500'} w={5} h={5} />}
               iconBg={'yellow.100'}
               text={'Manage trainings and programs'}
