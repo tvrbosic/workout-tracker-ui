@@ -1,4 +1,4 @@
-import { Box, Container, SimpleGrid, Stack, Text, Input, IconButton } from '@chakra-ui/react';
+import { Box, Container, SimpleGrid, Stack, Text, IconButton } from '@chakra-ui/react';
 import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
 import { BiMailSend } from 'react-icons/bi';
 
@@ -6,6 +6,7 @@ import Logo from 'components/header/Logo';
 import SocialButton from 'components/SocialButton';
 import FooterSectionHeader from 'components/footer/FooterSectionHeader';
 import FooterNavigation from 'components/footer/FooterNavigation';
+import Input from 'components/Input';
 
 export default function Footer() {
   return (
@@ -38,14 +39,7 @@ export default function Footer() {
           <Stack alignItems={{ base: 'center', md: 'flex-start' }}>
             <FooterSectionHeader>Stay up to date</FooterSectionHeader>
             <Stack direction={'row'}>
-              <Input
-                placeholder={'Your email address'}
-                bg={'whiteAlpha.100'}
-                border={0}
-                _focus={{
-                  bg: 'whiteAlpha.200',
-                }}
-              />
+              <Input placeholder={'Your email address'} />
               <IconButton
                 color={'gray.800'}
                 bg={'aquamarine.300'}

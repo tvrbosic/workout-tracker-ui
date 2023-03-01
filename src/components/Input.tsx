@@ -5,9 +5,13 @@ export default function Input({ ...rest }: InputProps) {
   return (
     <CInput
       color={'gray.50'}
-      borderColor={'gray.300'}
-      focusBorderColor={'blue.400'}
+      bg={'whiteAlpha.100'}
+      border={0}
       transition={'all 200ms linear'}
+      focusBorderColor={'blue.800'}
+      _focus={{
+        bg: 'whiteAlpha.200',
+      }}
       {...rest}
     />
   );
