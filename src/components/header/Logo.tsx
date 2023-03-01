@@ -8,7 +8,7 @@ const Logo = () => {
   return (
     <Flex as={'button'} fontSize={18} fontWeight="bold" onClick={clickHandler}>
       <Text color={'aquamarine.300'}>Workout</Text>
-      <Text color={'white.100'}>Tracker</Text>
+      <Text color={'gray.50'}>Tracker</Text>
     </Flex>
   );
 };

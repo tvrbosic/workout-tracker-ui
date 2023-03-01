@@ -20,23 +20,23 @@ export default function WithBackgroundImage() {
       >
         <Stack maxW={'2xl'} alignItems={'center'} spacing={10}>
           <Heading fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }} textAlign="center">
-            <Text as={'span'} color={'white.100'}>
+            <Text as={'span'} color={'gray.50'}>
               The&nbsp;
             </Text>
             <Text as={'span'} color={'aquamarine.300'}>
               body&nbsp;
             </Text>
-            <Text as={'span'} color={'white.100'}>
+            <Text as={'span'} color={'gray.50'}>
               achieves what the&nbsp;
             </Text>
             <Text as={'span'} color={'aquamarine.300'}>
               mind&nbsp;
             </Text>
-            <Text as={'span'} color={'white.100'}>
+            <Text as={'span'} color={'gray.50'}>
               believes.
             </Text>
           </Heading>
-          <Text fontSize={{ base: 'lg', lg: 'xl' }} color={'white.300'} align="center">
+          <Text fontSize={{ base: 'lg', lg: 'xl' }} color={'gray.50'} align="center">
             WorkoutTracker is free web platform designed for fitness enthusiast, personal trainers
             and casual athletes. Sign up today and take advantage of WorkoutTracker to kick-start
             your training.

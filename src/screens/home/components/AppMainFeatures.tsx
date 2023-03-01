@@ -44,7 +44,7 @@ export default function ProductOverview() {
             WorkoutTracker enables you to manage and plan your workouts, create training programs
             and track your progress.
           </Text>
-          <Stack spacing={4} divider={<StackDivider borderColor={'gray.100'} />}>
+          <Stack spacing={4} divider={<StackDivider borderColor={'gray.50'} />}>
             <AppFeature
               icon={<Icon as={IoCalendar} color={'purple.500'} w={5} h={5} />}
               iconBg={'purple.100'}

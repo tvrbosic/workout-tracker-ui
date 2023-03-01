@@ -9,7 +9,7 @@ import FooterNavigation from 'components/footer/FooterNavigation';
 
 export default function Footer() {
   return (
-    <Box mt={16} bg={'blue.900'} color={'white.100'}>
+    <Box mt={16} bg={'gray.800'} color={'gray.50'}>
       <Container as={Stack} maxW={'6xl'} py={10}>
         <SimpleGrid templateColumns={{ sm: '1fr', md: '2fr 1fr 2fr' }} spacing={8}>
           <Stack spacing={6} alignItems={{ base: 'center', md: 'flex-start' }}>
@@ -47,7 +47,7 @@ export default function Footer() {
                 }}
               />
               <IconButton
-                color={'blue.800'}
+                color={'gray.800'}
                 bg={'aquamarine.300'}
                 _hover={{
                   bg: 'aquamarine.500',

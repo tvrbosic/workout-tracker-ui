@@ -5,6 +5,11 @@ const routes = {
     name: 'Home',
     type: 'public',
   },
+  login: {
+    path: 'login',
+    name: 'Login',
+    type: 'public',
+  },
   about: {
     path: 'about',
     name: 'About',
