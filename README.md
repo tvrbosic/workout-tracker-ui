@@ -1,13 +1,13 @@
-# Workout Tracker Website - work in progress
+# Workout Tracker Website UI - work in progress
 
-Workout planning and tracking website.
+Workout planning and tracking website UI.
 
 - TODO: Image credits, external APIs used, Chakra templates credits
 - TODO: Mention implemented functionalities
 
 ## Usage
 
-1. Clone repository: `git clone git@github.com:tvrbosic/workout-tracker-website.git`
+1. Clone repository: `git clone git@github.com:tvrbosic/workout-tracker-ui.git`
 2. Install npm packages: `cd workout-tracker-website && npm install`
 3. Run json-server: `npx json-server-auth db.json --port 3001 --delay 300`
 4. Run app: `npm start`
