@@ -56,19 +56,15 @@ export function ApiContextProvider({ ...children }: IApiContextProviderProps) {
       (response) => response,
       // Handle statues other than 2xx (3xx, 4xx, 5xx)
       (error) => {
-        // TODO: Remove after testing
-        console.log(error);
-
-        const status = error.status;
+        const status = error.response.status;
         // 401 Unauthorized
         if (status === 401) {
           // Clear token from context and request headers
           setAuthToken('');
           apiInstance.setAuthorizationHeaders('');
         }
-        // TODO: Test and check if message location was guessed correctly
         // Set error object
-        setError({ status: status as number, message: error.response?.data.message });
+        setError({ status: status as number, message: error.response?.data.detail });
 
         return Promise.reject(error);
       }

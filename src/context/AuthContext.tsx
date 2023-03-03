@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 
 import { IUser } from 'ts/definitions';
 import { useLocalStorage } from 'hooks/useLocalStorage';
@@ -31,33 +31,42 @@ export function AuthContextProvider({ ...children }: IAuthProviderProps) {
   const [appUser, setAppUser] = useState<IUser | null>(null);
   const [token, setToken] = useState<string>('');
 
-  // On application start check if user token already exists in local storage
+  // On application start check if user token already exists in local storage and set it to context
   useEffect(() => {
     const token = localStorageController.getItem('token');
     if (token) {
-      // Decode jwt token and set user data
-      const user = parseJwt(token);
-      setAppUser(user);
+      setToken(token);
     }
   }, [localStorageController]);
 
+  // When token changes extract singed in user data and set to context
+  useEffect(() => {
+    if (token) {
+      const user = parseJwt(token);
+      setAppUser(user);
+    }
+  }, [token]);
+
   // Set user to state and local storage
-  const setAuthToken = (jwtToken: string) => {
-    // Set token to app
-    setToken(jwtToken);
-    // Decode jwt token and set user data
-    const user = parseJwt(token);
-    setAppUser(user);
-    // Set token to local storage
-    localStorageController.setItem('token', jwtToken);
-  };
+  const setAuthToken = useCallback(
+    (jwtToken: string) => {
+      // Set token to app
+      setToken(jwtToken);
+      // Decode jwt token and set user data
+      const user = parseJwt(token);
+      setAppUser(user);
+      // Set token to local storage
+      localStorageController.setItem('token', jwtToken);
+    },
+    [token, localStorageController]
+  );
 
   // Clear user from state and token from local storage
-  const clearAuthToken = () => {
+  const clearAuthToken = useCallback(() => {
     setToken('');
     setAppUser(null);
     localStorageController.setItem('token', '');
-  };
+  }, [localStorageController]);
 
   // Prepare context object which will be used and accessed throughout application
   // Memoize authContextObject to prevent unnecessary re-renders
@@ -68,8 +77,7 @@ export function AuthContextProvider({ ...children }: IAuthProviderProps) {
       setAuthToken,
       clearAuthToken,
     }),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [appUser]
+    [token, appUser, setAuthToken, clearAuthToken]
   );
   return <AuthContext.Provider value={authContextObject} {...children} />;
 }

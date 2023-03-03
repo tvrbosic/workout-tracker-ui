@@ -1,9 +1,9 @@
-import React from 'react';
-import { Input as CInput, InputProps } from '@chakra-ui/react';
+import { Input as CInput, InputProps, forwardRef } from '@chakra-ui/react';
 
-export default function Input({ ...rest }: InputProps) {
+const Input = forwardRef(({ ...rest }: InputProps, ref) => {
   return (
     <CInput
+      ref={ref}
       color={'gray.50'}
       bg={'whiteAlpha.100'}
       border={0}
@@ -15,4 +15,5 @@ export default function Input({ ...rest }: InputProps) {
       {...rest}
     />
   );
-}
+});
+export default Input;

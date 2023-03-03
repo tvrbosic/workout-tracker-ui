@@ -9,7 +9,7 @@ Workout planning and tracking website UI.
 
 1. Clone repository: `git clone git@github.com:tvrbosic/workout-tracker-ui.git`
 2. Install npm packages: `cd workout-tracker-website && npm install`
-3. Run json-server: `npx json-server-auth db.json --port 3001 --delay 300`
+3. Run json-server: `npx json-server-auth db.json --port 8000 --delay 300`
 4. Run app: `npm start`
 
 ## npm packages used
@@ -32,12 +32,12 @@ Additional users can be created through Register page or by follow [Json Server 
 ### User 1
 
 - Email: user1@email.com
-- Password: Password1!
+- Password: Firstuserpassword1!
 
 ### User 2
 
 - Email: user2@email.com
-- Password: Password2!
+- Password: Seconduserpassword2!
 
 ## Screenshots
 
