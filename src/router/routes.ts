@@ -6,17 +6,17 @@ const routes = {
     type: 'public',
   },
   login: {
-    path: 'login',
+    path: '/login',
     name: 'Login',
     type: 'public',
   },
   about: {
-    path: 'about',
+    path: '/about',
     name: 'About',
     type: 'public',
   },
   contact: {
-    path: 'contact',
+    path: '/contact',
     name: 'Contact',
     type: 'public',
   },

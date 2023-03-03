@@ -10,6 +10,7 @@ import Dashboard from 'screens/dashboard/Dashboard';
 import Calendar from 'screens/calendar/Calendar';
 import Workouts from 'screens/workouts/Workouts';
 import Programs from 'screens/programs/Programs';
+import AuthenticatedRoute from 'components/AuthenticatedRoute';
 
 function AppRouter() {
   let element = useRoutes([
@@ -20,10 +21,38 @@ function AppRouter() {
         { index: true, element: <Home /> },
         { path: routes.about.path, element: <About /> },
         { path: routes.contact.path, element: <Contact /> },
-        { path: routes.dashboard.path, element: <Dashboard /> },
-        { path: routes.calendar.path, element: <Calendar /> },
-        { path: routes.workouts.path, element: <Workouts /> },
-        { path: routes.programs.path, element: <Programs /> },
+        {
+          path: routes.dashboard.path,
+          element: (
+            <AuthenticatedRoute>
+              <Dashboard />
+            </AuthenticatedRoute>
+          ),
+        },
+        {
+          path: routes.calendar.path,
+          element: (
+            <AuthenticatedRoute>
+              <Calendar />
+            </AuthenticatedRoute>
+          ),
+        },
+        {
+          path: routes.workouts.path,
+          element: (
+            <AuthenticatedRoute>
+              <Workouts />
+            </AuthenticatedRoute>
+          ),
+        },
+        {
+          path: routes.programs.path,
+          element: (
+            <AuthenticatedRoute>
+              <Programs />
+            </AuthenticatedRoute>
+          ),
+        },
       ],
     },
     { path: routes.login.path, element: <Login /> },
