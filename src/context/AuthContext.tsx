@@ -54,6 +54,7 @@ export function AuthContextProvider({ ...children }: IAuthProviderProps) {
       setToken(jwtToken);
       // Decode jwt token and set user data
       const user = parseJwt(token);
+      console.log(user);
       setAppUser(user);
       // Set token to local storage
       localStorageController.setItem('token', jwtToken);

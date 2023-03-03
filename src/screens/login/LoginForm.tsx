@@ -40,8 +40,8 @@ export default function LoginForm() {
     });
     console.log(response);
     // On success set user's jwt token and redirect to dashboard
-    // setAuthToken(response.access);
-    // navigate(routes.dashboard.path);
+    setAuthToken(response.access);
+    navigate(routes.dashboard.path);
   };
 
   // Console log error inside useEffect if it exists
