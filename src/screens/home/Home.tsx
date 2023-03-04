@@ -8,7 +8,7 @@ export default function Home() {
     <VStack spacing={12}>
       <Hero />
       <AppMainFeatures />
-      <div>TODO: Add component with content</div>
+      <div>TODO: Component with content</div>
     </VStack>
   );
 }

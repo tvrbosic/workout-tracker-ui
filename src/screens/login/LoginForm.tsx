@@ -32,9 +32,11 @@ export default function LoginForm() {
   } = useForm<ILoginCredentials>();
 
   // If user is already logged in redirect to dashboard
-  if (user) {
-    navigate(routes.dashboard.path);
-  }
+  useEffect(() => {
+    if (user) {
+      navigate(routes.dashboard.path);
+    }
+  }, [user, navigate]);
 
   const onFormSubmit = async (data: ILoginCredentials) => {
     // Clear previous error if it exists
@@ -45,8 +47,6 @@ export default function LoginForm() {
     });
     // On success set user's jwt token and redirect to dashboard
     setAuthToken(response.access);
-    // TODO:
-    // Redirect to dashboard
   };
 
   // Console log error inside useEffect if it exists

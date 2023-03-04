@@ -1,5 +1,11 @@
-import { Box } from '@chakra-ui/react';
+import { Center } from '@chakra-ui/react';
+
+import HeaderMarginLayout from 'components/layouts/HeaderMarginLayout';
 
 export default function Calendar() {
-  return <Box>Calendar</Box>;
+  return (
+    <HeaderMarginLayout>
+      <Center minHeight={'100vh'}>TODO: Calendar</Center>
+    </HeaderMarginLayout>
+  );
 }

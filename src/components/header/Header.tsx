@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Box, Flex, HStack, IconButton, useDisclosure } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 
@@ -15,8 +15,10 @@ export default function Header() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [bgColor, setBgColor] = useState('transparent');
   const authCtx = useAuthContext();
+  const location = useLocation();
   const navigate = useNavigate();
 
+  // Function to change header color on scroll (used only on homepage)
   const handleScroll = () => {
     const position = window.pageYOffset;
     if (position > 0) {
@@ -28,13 +30,20 @@ export default function Header() {
     }
   };
 
+  // Set event listener on homepage to change header color on scroll
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    // Cleanup function to remove event listener on unmount (avoid memory leaks)
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+    // Check if user is on homepage and set event listener
+    if (location.pathname === routes.root.path) {
+      window.addEventListener('scroll', handleScroll);
+      // Cleanup function to remove event listener on unmount (avoid memory leaks)
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+      // If user is not on homepage, set header color to a darker shade
+    } else {
+      setBgColor('gray.800');
+    }
+  }, [location.pathname]);
 
   return (
     <Box
@@ -46,7 +55,7 @@ export default function Header() {
       zIndex="999"
       transition={'all 200ms linear'}
     >
-      <Flex minH={'9dvh'} alignItems={'center'} justifyContent={'space-between'}>
+      <Flex minH={'9vh'} alignItems={'center'} justifyContent={'space-between'}>
         <IconButton
           size={'md'}
           icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}

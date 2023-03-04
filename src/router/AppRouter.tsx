@@ -1,7 +1,7 @@
 import { useRoutes } from 'react-router-dom';
 
 import routes from 'router/routes';
-import MainLayout from 'components/MainLayout';
+import MainLayout from 'components/layouts/MainLayout';
 import Home from 'screens/home/Home';
 import Login from 'screens/login/Login';
 import About from 'screens/about/about';
