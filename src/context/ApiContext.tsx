@@ -38,7 +38,7 @@ export const useApiContext = () => useContext(ApiContext);
 
 // Create and export context provider
 export function ApiContextProvider({ ...children }: IApiContextProviderProps) {
-  const { token, setAuthToken } = useAuthContext();
+  const { token, setAuthToken, clearAuthToken } = useAuthContext();
   const [error, setError] = useState<IBackendError | null>(null);
 
   const clearError = () => setError(null);
@@ -59,8 +59,8 @@ export function ApiContextProvider({ ...children }: IApiContextProviderProps) {
         const status = error.response.status;
         // 401 Unauthorized
         if (status === 401) {
-          // Clear token from context and request headers
-          setAuthToken('');
+          // Clear token and user from context and request headers
+          clearAuthToken();
           apiInstance.setAuthorizationHeaders('');
         }
         // Set error object
@@ -85,7 +85,7 @@ export function ApiContextProvider({ ...children }: IApiContextProviderProps) {
         return Promise.reject(error);
       }
     );
-  }, [setAuthToken]);
+  }, [setAuthToken, clearAuthToken]);
 
   // Memoize
   const contextValue = useMemo(() => ({ api: apiInstance, error, clearError }), [error]);

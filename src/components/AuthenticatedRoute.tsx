@@ -8,9 +8,9 @@ interface IAuthenticatedRouteProps {
 }
 
 function AuthenticatedRoute({ children }: IAuthenticatedRouteProps) {
-  const { user } = useAuthContext();
+  const { token } = useAuthContext();
 
-  return !!user ? children : <Navigate to={routes.login.path} replace />;
+  return !!token ? children : <Navigate to={routes.login.path} replace />;
 }
 
 export default AuthenticatedRoute;

@@ -2,11 +2,11 @@
 
 Workout planning and tracking website UI.
 
-- TODO: Image credits, external APIs used, Chakra templates credits
-- TODO: Mention implemented functionalities
-- TODO: Add mock data to db.json (website has backend implemented but can be tested with json-server-auth)
+Application has mock server [Json Server Auth](https://www.npmjs.com/package/json-server-auth) which can be used for testing frontend application.
 
-## Usage
+Actual backend implemented for this application: [Workout Tracker Website API](https://github.com/tvrbosic/workout-tracker-api)
+
+## Usage with mock server
 
 1. Clone repository: `git clone git@github.com:tvrbosic/workout-tracker-ui.git`
 2. Install npm packages: `cd workout-tracker-website && npm install`
@@ -39,6 +39,18 @@ Additional users can be created through Register page or by follow [Json Server 
 
 - Email: user2@email.com
 - Password: Seconduserpassword2!
+
+## Credits
+
+### Homepage Images
+
+- Woman lifting barbell: [Sven Mieke](https://unsplash.com/@sxoxm) from [Unsplash](https://unsplash.com)
+  https://unsplash.com/@bradencollum
+- Runner in ready position: [Braden Collum](https://unsplash.com/@bradencollum) from [Unsplash](https://unsplash.com)
+
+### External APIs used
+
+- [Exercises API](https://api-ninjas.com/api/exercises) from [API Ninjas](https://api-ninjas.com)
 
 ## Screenshots
 
