@@ -4,6 +4,7 @@ Workout planning and tracking website UI.
 
 - TODO: Image credits, external APIs used, Chakra templates credits
 - TODO: Mention implemented functionalities
+- TODO: Add mock data to db.json (website has backend implemented but can be tested with json-server-auth)
 
 ## Usage
 

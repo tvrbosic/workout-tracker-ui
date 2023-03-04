@@ -10,6 +10,7 @@ import Dashboard from 'screens/dashboard/Dashboard';
 import Calendar from 'screens/calendar/Calendar';
 import Workouts from 'screens/workouts/Workouts';
 import Programs from 'screens/programs/Programs';
+import Settings from 'screens/settings/Settings';
 import AuthenticatedRoute from 'components/AuthenticatedRoute';
 
 function AppRouter() {
@@ -50,6 +51,14 @@ function AppRouter() {
           element: (
             <AuthenticatedRoute>
               <Programs />
+            </AuthenticatedRoute>
+          ),
+        },
+        {
+          path: routes.settings.path,
+          element: (
+            <AuthenticatedRoute>
+              <Settings />
             </AuthenticatedRoute>
           ),
         },

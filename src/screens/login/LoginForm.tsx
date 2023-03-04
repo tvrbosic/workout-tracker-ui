@@ -38,7 +38,6 @@ export default function LoginForm() {
       email: data.email,
       password: data.password,
     });
-    console.log(response);
     // On success set user's jwt token and redirect to dashboard
     setAuthToken(response.access);
     navigate(routes.dashboard.path);

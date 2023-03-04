@@ -42,6 +42,7 @@ export function AuthContextProvider({ ...children }: IAuthProviderProps) {
   // When token changes extract singed in user data and set to context
   useEffect(() => {
     if (token) {
+      // Decode jwt token and set user data
       const user = parseJwt(token);
       setAppUser(user);
     }
@@ -52,14 +53,10 @@ export function AuthContextProvider({ ...children }: IAuthProviderProps) {
     (jwtToken: string) => {
       // Set token to app
       setToken(jwtToken);
-      // Decode jwt token and set user data
-      const user = parseJwt(token);
-      console.log(user);
-      setAppUser(user);
       // Set token to local storage
       localStorageController.setItem('token', jwtToken);
     },
-    [token, localStorageController]
+    [localStorageController]
   );
 
   // Clear user from state and token from local storage

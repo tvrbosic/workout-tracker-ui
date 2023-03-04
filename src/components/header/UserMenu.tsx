@@ -1,14 +1,20 @@
-import {
-  Avatar,
-  Button as CButton,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  MenuDivider,
-} from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom';
+import { Avatar, Button as CButton, Menu, MenuButton, MenuList, Text } from '@chakra-ui/react';
+import { IoLogOutOutline, IoSettingsSharp } from 'react-icons/io5';
+
+import { useAuthContext } from 'context/AuthContext';
+import routes from 'router/routes';
+import MenuItem from 'components/header/MenuItem';
 
 export default function UserMenu() {
+  const { clearAuthToken } = useAuthContext();
+  const navigate = useNavigate();
+
+  const logoutHandler = () => {
+    clearAuthToken();
+    navigate(routes.root.path);
+  };
+
   return (
     <Menu>
       <MenuButton as={CButton} rounded={'full'} variant={'link'} cursor={'pointer'} minW={0}>
@@ -20,11 +26,15 @@ export default function UserMenu() {
         />
       </MenuButton>
 
-      <MenuList>
-        <MenuItem>Link 1</MenuItem>
-        <MenuItem>Link 2</MenuItem>
-        <MenuDivider />
-        <MenuItem>Link 3</MenuItem>
+      <MenuList p={0} borderRadius={'sm'}>
+        <MenuItem onClick={() => navigate(routes.settings.path)}>
+          <IoSettingsSharp />
+          <Text ml={3}>Settings</Text>
+        </MenuItem>
+        <MenuItem onClick={logoutHandler}>
+          <IoLogOutOutline />
+          <Text ml={3}>Sign out</Text>
+        </MenuItem>
       </MenuList>
     </Menu>
   );

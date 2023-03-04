@@ -41,6 +41,11 @@ const routes = {
     name: 'Programs',
     type: 'private',
   },
+  settings: {
+    path: '/settings',
+    name: 'Settings',
+    type: 'private',
+  },
 };
 
 export default routes;
