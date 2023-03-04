@@ -23,13 +23,13 @@ export default function WithBackgroundImage() {
             <Text as={'span'} color={'gray.50'}>
               The&nbsp;
             </Text>
-            <Text as={'span'} color={'aquamarine.300'}>
+            <Text as={'span'} color={'green.400'}>
               body&nbsp;
             </Text>
             <Text as={'span'} color={'gray.50'}>
               achieves what the&nbsp;
             </Text>
-            <Text as={'span'} color={'aquamarine.300'}>
+            <Text as={'span'} color={'green.400'}>
               mind&nbsp;
             </Text>
             <Text as={'span'} color={'gray.50'}>

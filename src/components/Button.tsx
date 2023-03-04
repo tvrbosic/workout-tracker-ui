@@ -12,10 +12,10 @@ export default function Button({ children, ...rest }: IButtonProps) {
       py={2}
       fontSize="sm"
       color={'gray.800'}
-      bg={'aquamarine.300'}
+      bg={'green.400'}
       transition={'all 200ms linear'}
       _hover={{
-        bg: 'aquamarine.600',
+        bg: 'green.500',
       }}
       spinner={<Spinner color="gray.800" emptyColor="gray.200" />}
       {...rest}

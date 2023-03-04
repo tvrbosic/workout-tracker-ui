@@ -11,7 +11,7 @@ import {
 } from '@chakra-ui/react';
 import { IoAnalyticsSharp, IoBarbell, IoCalendar } from 'react-icons/io5';
 
-import ProductOverviewImage from 'assets/images/unsplash-braden-collum-1.jpg';
+import RunnerImage from 'assets/images/unsplash-braden-collum-1.jpg';
 import AppFeature from 'screens/home/components/AppFeature';
 
 export default function ProductOverview() {
@@ -19,12 +19,7 @@ export default function ProductOverview() {
     <Container maxW={'5xl'} py={12}>
       <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
         <Flex>
-          <Image
-            rounded={'md'}
-            alt={'App features image'}
-            src={ProductOverviewImage}
-            objectFit={'cover'}
-          />
+          <Image rounded={'md'} alt={'App features image'} src={RunnerImage} objectFit={'cover'} />
         </Flex>
 
         <Stack spacing={4}>

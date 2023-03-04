@@ -27,7 +27,7 @@ export default function UserMenu() {
       </MenuButton>
 
       <MenuList p={0} borderRadius={'sm'}>
-        <MenuItem onClick={() => navigate(routes.settings.path)}>
+        <MenuItem onClick={() => navigate(routes.profile.path)}>
           <IoSettingsSharp />
           <Text ml={3}>Settings</Text>
         </MenuItem>

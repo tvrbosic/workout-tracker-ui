@@ -42,9 +42,9 @@ export default function Footer() {
               <Input placeholder={'Your email address'} />
               <IconButton
                 color={'gray.800'}
-                bg={'aquamarine.300'}
+                bg={'green.400'}
                 _hover={{
-                  bg: 'aquamarine.500',
+                  bg: 'green.500',
                 }}
                 aria-label="Subscribe"
                 icon={<BiMailSend />}
