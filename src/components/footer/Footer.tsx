@@ -17,7 +17,7 @@ export default function Footer() {
             <Box>
               <Logo />
             </Box>
-            <Text fontSize={'sm'}>© 2022 Workout Tracker. All rights reserved</Text>
+            <Text fontSize={'sm'}>© 2023 Workout Tracker. All rights reserved</Text>
             <Stack direction={'row'} spacing={6}>
               <SocialButton label={'Twitter'} href={'#'}>
                 <FaTwitter />

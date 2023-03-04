@@ -21,7 +21,7 @@ import Button from 'components/Button';
 
 export default function LoginForm() {
   const { api, error, clearError } = useApiContext();
-  const { setAuthToken } = useAuthContext();
+  const { user, setAuthToken } = useAuthContext();
   const navigate = useNavigate();
   const toast = useToast();
 
@@ -30,6 +30,11 @@ export default function LoginForm() {
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm<ILoginCredentials>();
+
+  // If user is already logged in redirect to dashboard
+  if (user) {
+    navigate(routes.dashboard.path);
+  }
 
   const onFormSubmit = async (data: ILoginCredentials) => {
     // Clear previous error if it exists
@@ -40,7 +45,8 @@ export default function LoginForm() {
     });
     // On success set user's jwt token and redirect to dashboard
     setAuthToken(response.access);
-    navigate(routes.dashboard.path);
+    // TODO:
+    // Redirect to dashboard
   };
 
   // Console log error inside useEffect if it exists
