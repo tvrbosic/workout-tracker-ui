@@ -3,6 +3,7 @@
 Workout planning and tracking website UI.
 
 Application has mock server [Json Server Auth](https://www.npmjs.com/package/json-server-auth) which can be used for testing frontend application.
+NOTE: Mock data is currently empty !!!
 
 Actual backend implemented for this application: [Workout Tracker Website API](https://github.com/tvrbosic/workout-tracker-api)
 
@@ -45,7 +46,6 @@ Additional users can be created through Register page or by follow [Json Server 
 ### Homepage Images
 
 - Woman lifting barbell: [Sven Mieke](https://unsplash.com/@sxoxm) from [Unsplash](https://unsplash.com)
-  https://unsplash.com/@bradencollum
 - Runner in ready position: [Braden Collum](https://unsplash.com/@bradencollum) from [Unsplash](https://unsplash.com)
 
 ### External APIs used
