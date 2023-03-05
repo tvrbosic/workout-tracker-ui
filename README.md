@@ -2,7 +2,9 @@
 
 Workout planning and tracking website UI.
 
-Application has mock server [Json Server Auth](https://www.npmjs.com/package/json-server-auth) which can be used for testing frontend application. **NOTE: Mock data is currently empty !!!**
+Application has mock server [Json Server Auth](https://www.npmjs.com/package/json-server-auth) which can be used for testing frontend application.
+
+**NOTE: Mock data is currently empty !!!**
 
 Actual backend implemented for this application: [Workout Tracker Website API](https://github.com/tvrbosic/workout-tracker-api)
 
