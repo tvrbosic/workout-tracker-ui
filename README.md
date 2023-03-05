@@ -23,7 +23,6 @@ Actual backend implemented for this application: [Workout Tracker Website API](h
 - [Chakra UI](https://chakra-ui.com)
 - [React Hook Form](https://react-hook-form.com)
 - [i18next](https://www.i18next.com)
-- [Sass](https://sass-lang.com)
 - [Framer Motion](https://www.framer.com)
 - [Jest](https://jestjs.io)
 - [Json Server Auth](https://www.npmjs.com/package/json-server-auth)
