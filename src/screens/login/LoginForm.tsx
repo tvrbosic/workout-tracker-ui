@@ -6,6 +6,7 @@ import {
   FormLabel,
   FormControl,
   Button,
+  Input,
   Link,
   Checkbox,
   FormErrorMessage,
@@ -17,7 +18,6 @@ import { useApiContext } from 'context/ApiContext';
 import { ILoginCredentials } from 'ts/definitions';
 import { validateEmail } from 'utils/validations';
 import routes from 'router/routes';
-import Input from 'components/Input';
 
 export default function LoginForm() {
   const { api, error, clearError } = useApiContext();
@@ -70,6 +70,7 @@ export default function LoginForm() {
           <FormLabel htmlFor="email">Email address</FormLabel>
           <Input
             type="email"
+            variant="filled"
             {...register('email', {
               required: 'Email field must not be empty!',
               validate: (value) => validateEmail(value) || 'Invalid email address!',
@@ -82,6 +83,7 @@ export default function LoginForm() {
           <FormLabel htmlFor="password">Password</FormLabel>
           <Input
             type="password"
+            variant="filled"
             {...register('password', { required: 'Password field must not be empty!' })}
           />
           <FormErrorMessage>{errors.password && errors.password.message}</FormErrorMessage>

@@ -3,10 +3,12 @@
  * https://chakra-ui.com/docs/styled-system/component-style
  */
 import { defineStyleConfig } from '@chakra-ui/react';
+import { inputAnatomy } from '@chakra-ui/anatomy';
 import { createMultiStyleConfigHelpers } from '@chakra-ui/styled-system';
 
-// This function creates a set of function that helps us create multipart component styles.
-const helpers = createMultiStyleConfigHelpers(['menu', 'item']);
+// Create objects with a set of functions that helps us create multipart component styles
+const inputHelpers = createMultiStyleConfigHelpers(inputAnatomy.keys);
+const menuHelpers = createMultiStyleConfigHelpers(['menu', 'item']);
 
 // Theme globals
 const transition: string = 'all 0.3s';
@@ -42,6 +44,36 @@ export const Button = defineStyleConfig({
   },
 });
 
+export const Input = inputHelpers.defineMultiStyleConfig({
+  baseStyle: {
+    field: {
+      transition,
+    },
+  },
+  variants: {
+    outline: {
+      field: {},
+    },
+    filled: {
+      field: {
+        color: 'gray.100',
+        bg: 'whiteAlpha.100',
+        border: 0,
+        _focus: {
+          bg: 'whiteAlpha.200',
+          boxShadow: 'none',
+        },
+        _hover: {
+          bg: 'whiteAlpha.200',
+        },
+      },
+    },
+  },
+  defaultProps: {
+    variant: 'outline',
+  },
+});
+
 export const IconButton = defineStyleConfig({
   // Common styles for all buttons
   baseStyle: {
@@ -64,7 +96,7 @@ export const IconButton = defineStyleConfig({
   },
 });
 
-export const Menu = helpers.defineMultiStyleConfig({
+export const Menu = menuHelpers.defineMultiStyleConfig({
   baseStyle: {
     item: {
       transition,
