@@ -1,7 +1,7 @@
 import { Box, Flex, Text, Divider } from '@chakra-ui/react';
 
 import SearchInput from 'components/SearchInput';
-import SelectDropdown from 'components/SelectDropdown';
+import DropdownMenu from 'components/DropdownMenu';
 
 // Mocked options data
 const options = [
@@ -20,7 +20,7 @@ function WorkoutsControlPanel() {
       <Flex>
         <SearchInput placeholder="Search workouts..." flexGrow={1} />
         <Divider orientation="vertical" mx={2} />
-        <SelectDropdown placeholder="Select type" options={options} width={'20%'} />
+        <DropdownMenu placeholder="Select type" options={options} width={'20%'} />
         <Divider orientation="vertical" mx={2} />
         <Text width={'25%'}>TODO: Datepicker </Text>
       </Flex>

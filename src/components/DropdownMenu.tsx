@@ -2,12 +2,12 @@ import { useState } from 'react';
 import { Menu, MenuButton, Button, MenuList, MenuItem, MenuButtonProps } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 
-interface ISelectDropdownProps extends MenuButtonProps {
+interface IDropdownPropsMenu extends MenuButtonProps {
   placeholder?: string;
   options: Array<{ value: string; label: string }>;
 }
 
-function SelectDropdown({ placeholder = 'Select option', options, ...rest }: ISelectDropdownProps) {
+function DropdownMenu({ placeholder = 'Select option', options, ...rest }: IDropdownPropsMenu) {
   const [displayValue, setDisplayValue] = useState(placeholder);
   const [selectedOption, setSelectedOption] = useState(options[0] || { value: '', label: '' });
 
@@ -33,4 +33,4 @@ function SelectDropdown({ placeholder = 'Select option', options, ...rest }: ISe
   );
 }
 
-export default SelectDropdown;
+export default DropdownMenu;
