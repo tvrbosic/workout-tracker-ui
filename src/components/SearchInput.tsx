@@ -1,46 +1,27 @@
-import { Flex, IconButton, Input, HTMLChakraProps } from '@chakra-ui/react';
+import { InputGroup, Input, InputLeftAddon, InputGroupProps } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
 
-interface ISearchInputProps extends HTMLChakraProps<'div'> {
+interface ISearchInputProps extends InputGroupProps {
   placeholder?: string;
 }
 
-// Basic react component
 function SearchInput({ placeholder, ...rest }: ISearchInputProps = {}) {
   return (
-    <Flex {...rest}>
-      <IconButton
+    <InputGroup {...rest}>
+      <InputLeftAddon
         aria-label="Search icon"
+        borderRight={0}
         borderTopRightRadius={0}
         borderBottomRightRadius={0}
-        color={'gray.800'}
-        bgColor={'green.300'}
-        border={'1px solid'}
-        borderColor={'green.500'}
-        borderRight={0}
-        transition={'all 200ms linear'}
-        _hover={{
-          bgColor: 'green.400',
-        }}
-        icon={<SearchIcon borderColor={'green.500'} />}
+        children={<SearchIcon />}
       />
       <Input
+        type="text"
         placeholder={placeholder}
-        type={'text'}
-        color={'gray.800'}
-        borderColor={'green.500'}
         borderTopLeftRadius={0}
         borderBottomLeftRadius={0}
-        transition={'all 200ms linear'}
-        _focus={{
-          boxShadow: 'none',
-          bgColor: 'whiteAlpha.200',
-        }}
-        _hover={{
-          borderColor: 'gray.500',
-        }}
       />
-    </Flex>
+    </InputGroup>
   );
 }
 

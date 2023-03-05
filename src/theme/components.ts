@@ -46,13 +46,35 @@ export const Button = defineStyleConfig({
 
 export const Input = inputHelpers.defineMultiStyleConfig({
   baseStyle: {
+    addon: {
+      transition,
+    },
     field: {
       transition,
     },
   },
   variants: {
     outline: {
-      field: {},
+      addon: {
+        color: 'gray.800',
+        bgColor: 'green.300',
+        border: '1px solid',
+        borderColor: 'green.500',
+        _hover: {
+          bgColor: 'green.400',
+        },
+      },
+      field: {
+        color: 'gray.800',
+        borderColor: 'green.500',
+        _focus: {
+          boxShadow: 'none',
+          bgColor: 'whiteAlpha.200',
+        },
+        _hover: {
+          borderColor: 'gray.500',
+        },
+      },
     },
     filled: {
       field: {
@@ -71,6 +93,19 @@ export const Input = inputHelpers.defineMultiStyleConfig({
   },
   defaultProps: {
     variant: 'outline',
+  },
+});
+
+export const Menu = menuHelpers.defineMultiStyleConfig({
+  baseStyle: {
+    item: {
+      transition,
+      py: 2,
+      px: 4,
+      _hover: {
+        bg: 'green.200',
+      },
+    },
   },
 });
 
@@ -93,18 +128,5 @@ export const IconButton = defineStyleConfig({
   defaultProps: {
     size: 'md',
     variant: 'solid',
-  },
-});
-
-export const Menu = menuHelpers.defineMultiStyleConfig({
-  baseStyle: {
-    item: {
-      transition,
-      py: 2,
-      px: 4,
-      _hover: {
-        bg: 'green.200',
-      },
-    },
   },
 });
