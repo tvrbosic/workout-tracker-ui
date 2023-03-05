@@ -1,7 +1,8 @@
-import { Box, Flex, Text, Divider } from '@chakra-ui/react';
+import { Box, Flex, Center, Divider } from '@chakra-ui/react';
 
 import SearchInput from 'components/SearchInput';
 import DropdownMenu from 'components/DropdownMenu';
+import CustomDatePicker from 'components/CustomDatePicker';
 
 // Mocked options data
 const options = [
@@ -16,15 +17,19 @@ const options = [
 // Basic react component
 function WorkoutsControlPanel() {
   return (
-    <Box bgColor={'gray.200'} py={3} px={8}>
+    <Center bgColor={'gray.200'} py={3}>
       <Flex>
-        <SearchInput placeholder="Search workouts..." flexGrow={1} />
+        <SearchInput placeholder="Search workouts..." />
         <Divider orientation="vertical" mx={2} />
-        <DropdownMenu placeholder="Select type" options={options} width={'20%'} />
+        <Box>
+          <DropdownMenu placeholder="Select type" options={options} width={'100%'} />
+        </Box>
         <Divider orientation="vertical" mx={2} />
-        <Text width={'25%'}>TODO: Datepicker </Text>
+        <Box>
+          <CustomDatePicker />
+        </Box>
       </Flex>
-    </Box>
+    </Center>
   );
 }
 
