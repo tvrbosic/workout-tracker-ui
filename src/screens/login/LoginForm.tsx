@@ -5,9 +5,10 @@ import {
   Stack,
   FormLabel,
   FormControl,
-  FormErrorMessage,
+  Button,
   Link,
   Checkbox,
+  FormErrorMessage,
   useToast,
 } from '@chakra-ui/react';
 
@@ -17,7 +18,6 @@ import { ILoginCredentials } from 'ts/definitions';
 import { validateEmail } from 'utils/validations';
 import routes from 'router/routes';
 import Input from 'components/Input';
-import Button from 'components/Button';
 
 export default function LoginForm() {
   const { api, error, clearError } = useApiContext();

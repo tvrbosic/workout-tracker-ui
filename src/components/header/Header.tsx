@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Box, Flex, HStack, IconButton, useDisclosure } from '@chakra-ui/react';
+import { Box, Flex, HStack, Button, IconButton, useDisclosure } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 
 import { useAuthContext } from 'context/AuthContext';
 import routes from 'router/routes';
 import Logo from 'components/header/Logo';
-import Button from 'components/Button';
 import Navigation from 'components/header/Navigation';
 import MobileNav from 'components/header/MobileNavigation';
 import UserMenu from 'components/header/UserMenu';

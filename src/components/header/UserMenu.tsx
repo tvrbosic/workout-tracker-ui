@@ -1,10 +1,9 @@
 import { useNavigate } from 'react-router-dom';
-import { Avatar, Button as CButton, Menu, MenuButton, MenuList, Text } from '@chakra-ui/react';
+import { Avatar, Button, Menu, MenuButton, MenuList, MenuItem, Text } from '@chakra-ui/react';
 import { IoLogOutOutline, IoSettingsSharp } from 'react-icons/io5';
 
 import { useAuthContext } from 'context/AuthContext';
 import routes from 'router/routes';
-import MenuItem from 'components/header/MenuItem';
 
 export default function UserMenu() {
   const { clearAuthToken } = useAuthContext();
@@ -17,7 +16,7 @@ export default function UserMenu() {
 
   return (
     <Menu>
-      <MenuButton as={CButton} rounded={'full'} variant={'link'} cursor={'pointer'} minW={0}>
+      <MenuButton as={Button} rounded={'full'} variant={'link'} cursor={'pointer'} minW={0}>
         <Avatar
           size={'sm'}
           src={
@@ -26,7 +25,7 @@ export default function UserMenu() {
         />
       </MenuButton>
 
-      <MenuList p={0} borderRadius={'sm'}>
+      <MenuList>
         <MenuItem onClick={() => navigate(routes.profile.path)}>
           <IoSettingsSharp />
           <Text ml={3}>Settings</Text>

@@ -25,7 +25,7 @@ export default function ProductOverview() {
         <Stack spacing={4}>
           <Text
             textTransform={'uppercase'}
-            color={'blue.400'}
+            color={'green.500'}
             fontWeight={600}
             fontSize={'sm'}
             p={2}

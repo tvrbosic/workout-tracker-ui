@@ -1,4 +1,4 @@
-import { Box, Container } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 
 import HeaderMarginLayout from 'components/layouts/HeaderMarginLayout';
 import WorkoutsControlPanel from 'screens/workouts/components/WorkoutsControlPanel';
@@ -6,10 +6,10 @@ import WorkoutsControlPanel from 'screens/workouts/components/WorkoutsControlPan
 export default function Workouts() {
   return (
     <HeaderMarginLayout>
-      <Container py={2}>
+      <Box py={2} minHeight={'100vh'}>
         <WorkoutsControlPanel />
         <Box>Workouts</Box>
-      </Container>
+      </Box>
     </HeaderMarginLayout>
   );
 }

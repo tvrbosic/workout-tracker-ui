@@ -40,15 +40,7 @@ export default function Footer() {
             <FooterSectionHeader>Stay up to date</FooterSectionHeader>
             <Stack direction={'row'}>
               <Input placeholder={'Your email address'} />
-              <IconButton
-                color={'gray.800'}
-                bg={'green.400'}
-                _hover={{
-                  bg: 'green.500',
-                }}
-                aria-label="Subscribe"
-                icon={<BiMailSend />}
-              />
+              <IconButton aria-label="Subscribe" icon={<BiMailSend />} />
             </Stack>
           </Stack>
         </SimpleGrid>

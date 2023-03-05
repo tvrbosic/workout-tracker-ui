@@ -1,7 +1,6 @@
-import { Stack, Flex, Heading, Text, VStack } from '@chakra-ui/react';
+import { Stack, Flex, Heading, Button, Text, VStack } from '@chakra-ui/react';
 
 import HeroImage from 'assets/images/unsplash-sven-mieke-1.jpg';
-import Button from 'components/Button';
 
 export default function WithBackgroundImage() {
   return (
@@ -43,7 +42,7 @@ export default function WithBackgroundImage() {
           </Text>
 
           <Stack direction={'row'}>
-            <Button px={10} py={6} fontSize="md">
+            <Button px={10} py={6}>
               Register Today
             </Button>
           </Stack>
