@@ -7,17 +7,17 @@ import {
   Th,
   Tbody,
   Td,
-  Tfoot,
   TableProps,
 } from '@chakra-ui/react';
 
-interface ITableProps extends TableProps {
+interface ITableProps<T extends object> extends TableProps {
   caption?: string;
   headers: string[];
-  data: any[][];
+  // Array of generic typescript objects
+  data: T[];
 }
 
-function Table({ headers, data, caption }: ITableProps) {
+function Table<T extends object>({ headers, data, caption }: ITableProps<T>) {
   return (
     <TableContainer>
       <CTable variant="simple">
@@ -30,10 +30,10 @@ function Table({ headers, data, caption }: ITableProps) {
           </Tr>
         </Thead>
         <Tbody>
-          {data.map((row, index) => (
-            <Tr key={index}>
-              {row.map((cell, index) => (
-                <Td key={index}>{cell}</Td>
+          {data.map((object, objIndex) => (
+            <Tr key={objIndex}>
+              {Object.values(object).map((value, valueIndex) => (
+                <Td key={valueIndex}>{value}</Td>
               ))}
             </Tr>
           ))}

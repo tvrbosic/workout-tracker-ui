@@ -16,7 +16,6 @@ function DropdownMenu({ placeholder = 'Select option', options, ...rest }: IDrop
     setDisplayValue(option.label);
   };
 
-  console.log(selectedOption);
   return (
     <Menu autoSelect={true}>
       <MenuButton as={Button} rightIcon={<ChevronDownIcon />} {...rest}>
