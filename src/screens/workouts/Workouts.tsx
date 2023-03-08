@@ -5,7 +5,7 @@ import { useQuery } from 'react-query';
 import { useApiContext } from 'context/ApiContext';
 import HeaderMarginLayout from 'components/layouts/HeaderMarginLayout';
 import WorkoutsControlPanel from 'screens/workouts/components/WorkoutsControlPanel';
-import Table from 'components/Table';
+import WorkoutsTable from 'screens/workouts/components/WorkoutsTable';
 import { IWorkout } from 'ts/definitions';
 import { formatDate } from 'utils/utility';
 
@@ -24,10 +24,8 @@ export default function Workouts() {
 
   // Normalize data for table
   useEffect(() => {
-    if (query.isFetched) {
-      console.log(query.data.length);
+    if (query.isFetched && !query.isError) {
       const workouts = query.data.reduce((acc: ITableData[], workout: IWorkout) => {
-        console.log(acc);
         acc.push({
           name: workout.name,
           type: workout.type,
@@ -38,14 +36,17 @@ export default function Workouts() {
       }, []);
       setWorkouts(workouts);
     }
-  }, [query.data, query.isFetched]);
+  }, [query.data, query.isFetched, query.isError]);
 
   return (
     <HeaderMarginLayout>
       <Box py={2} minHeight={'100vh'}>
         <WorkoutsControlPanel />
         <Box>
-          <Table headers={['Name', 'Type', 'Date created', '# Exercises']} data={workouts} />
+          <WorkoutsTable
+            headers={['Name', 'Type', 'Date created', '# Exercises']}
+            data={workouts}
+          />
         </Box>
       </Box>
     </HeaderMarginLayout>

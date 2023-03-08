@@ -11,6 +11,7 @@ import {
   HStack,
   IconButton,
 } from '@chakra-ui/react';
+import CategoryBadge from 'components/CategoryBadge';
 
 import { FiEdit, FiTrash2 } from 'react-icons/fi';
 
@@ -21,7 +22,7 @@ interface ITableProps<T extends object> extends TableProps {
   data: T[];
 }
 
-function Table<T extends object>({ headers, data, caption }: ITableProps<T>) {
+function WorkoutsTable<T extends object>({ headers, data, caption }: ITableProps<T>) {
   return (
     <TableContainer>
       <CTable variant="simple" colorScheme={'gray'}>
@@ -43,9 +44,17 @@ function Table<T extends object>({ headers, data, caption }: ITableProps<T>) {
                 bgColor: 'green.50',
               }}
             >
-              {Object.values(object).map((value, valueIndex) => (
-                <Td key={valueIndex}>{value}</Td>
-              ))}
+              {Object.values(object).map((value, valueIndex) => {
+                // If the value is the category, render a badge
+                if (valueIndex === 1) {
+                  return (
+                    <Td key={valueIndex}>
+                      <CategoryBadge category={value} />
+                    </Td>
+                  );
+                }
+                return <Td key={valueIndex}>{value}</Td>;
+              })}
               <Td key={'controls'}>
                 <HStack>
                   <IconButton
@@ -70,4 +79,4 @@ function Table<T extends object>({ headers, data, caption }: ITableProps<T>) {
   );
 }
 
-export default Table;
+export default WorkoutsTable;
