@@ -10,7 +10,6 @@ import {
   Link,
   Checkbox,
   FormErrorMessage,
-  useToast,
 } from '@chakra-ui/react';
 
 import { useAuthContext } from 'context/AuthContext';
@@ -23,12 +22,11 @@ export default function LoginForm() {
   const { api, error, clearError } = useApiContext();
   const { user, setAuthToken } = useAuthContext();
   const navigate = useNavigate();
-  const toast = useToast();
 
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm<ILoginCredentials>();
 
   // If user is already logged in redirect to dashboard
@@ -39,8 +37,6 @@ export default function LoginForm() {
   }, [user, navigate]);
 
   const onFormSubmit = async (data: ILoginCredentials) => {
-    // Clear previous error if it exists
-    clearError();
     const response = await api.login({
       email: data.email,
       password: data.password,
@@ -48,20 +44,6 @@ export default function LoginForm() {
     // On success set user's jwt token and redirect to dashboard
     setAuthToken(response.access);
   };
-
-  // Console log error inside useEffect if it exists
-  useEffect(() => {
-    if (error) {
-      toast({
-        title: 'An error occurred',
-        description: error.message,
-        status: 'error',
-        duration: 3000,
-        isClosable: true,
-      });
-    }
-    clearError();
-  }, [error, toast, clearError]);
 
   return (
     <form onSubmit={handleSubmit(onFormSubmit)}>
