@@ -12,6 +12,8 @@ function MainLayout() {
 
   // Display error toast message if error exists
   useEffect(() => {
+    // Clear error before displaying toast
+    clearError();
     if (error) {
       toast({
         title: 'An error occurred',
@@ -21,7 +23,6 @@ function MainLayout() {
         isClosable: true,
       });
     }
-    clearError();
   }, [error, toast, clearError]);
 
   return (

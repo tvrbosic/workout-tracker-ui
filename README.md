@@ -41,6 +41,11 @@ Additional users can be created through Register page or by follow [Json Server 
 - Email: user2@email.com
 - Password: Seconduserpassword2!
 
+### Superuser
+
+- Email: admin@email.com
+- Password: Superuserpassword0!
+
 ## Credits
 
 ### Homepage Images
@@ -48,9 +53,9 @@ Additional users can be created through Register page or by follow [Json Server 
 - Woman lifting barbell: [Sven Mieke](https://unsplash.com/@sxoxm) from [Unsplash](https://unsplash.com)
 - Runner in ready position: [Braden Collum](https://unsplash.com/@bradencollum) from [Unsplash](https://unsplash.com)
 
-### External APIs used
+### Exercises dataset
 
-- [Exercises API](https://api-ninjas.com/api/exercises) from [API Ninjas](https://api-ninjas.com)
+- [Open Public Domain Exercise Dataset in JSON format](https://github.com/wrkout/exercises.json)
 
 ## Screenshots
 

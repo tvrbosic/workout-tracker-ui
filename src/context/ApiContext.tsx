@@ -13,14 +13,11 @@ interface IBackendError {
   message?: string;
 }
 
-// Create axios object for each used API (application API, third party API with exercises)
-const primaryAxiosClient = axios.create({ baseURL: process.env.REACT_APP_PRIMARY_API_URL });
-const externalDataAxiosClient = axios.create({
-  baseURL: process.env.REACT_APP_EXTERNAL_DATA_API_URL,
-});
+// Create axios object
+const axiosClient = axios.create({ baseURL: process.env.REACT_APP_API_URL });
 
 // Create API class instance which contains prepared API requests
-const apiInstance = new Api(primaryAxiosClient, externalDataAxiosClient);
+const apiInstance = new Api(axiosClient);
 
 // Create ApiContext
 const ApiContext = React.createContext<{
@@ -50,8 +47,8 @@ export function ApiContextProvider({ ...children }: IApiContextProviderProps) {
   }, [token]);
 
   useEffect(() => {
-    // primaryAxiosClient response interceptor
-    primaryAxiosClient.interceptors.response.use(
+    // axiosClient response interceptor
+    axiosClient.interceptors.response.use(
       // For any 2xx status just pass response
       (response) => response,
       // Handle statues other than 2xx (3xx, 4xx, 5xx)
@@ -65,22 +62,6 @@ export function ApiContextProvider({ ...children }: IApiContextProviderProps) {
         }
         // Set error object
         setError({ status: status as number, message: error.response?.data.detail });
-
-        return Promise.reject(error);
-      }
-    );
-
-    // externalDataAxiosClient response interceptor
-    externalDataAxiosClient.interceptors.response.use(
-      // For any 2xx status just pass response
-      (response) => response,
-      // Handle statues other than 2xx (3xx, 4xx, 5xx)
-      (error) => {
-        // TODO: Remove after testing
-        console.log(error);
-        // TODO: Test and check if message location was guessed correctly
-        // Set error object
-        setError({ status: error.status as number, message: error.response?.data.message });
 
         return Promise.reject(error);
       }
