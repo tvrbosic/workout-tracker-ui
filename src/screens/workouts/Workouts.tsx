@@ -29,7 +29,7 @@ export default function Workouts() {
         acc.push({
           name: workout.name,
           category: workout.category,
-          date_created: formatDate(workout.date_created),
+          date_created: formatDate(workout.date_created!),
           num_exercises: workout.exercises.length,
         });
         return acc;

@@ -3,8 +3,8 @@ import React, { useReducer, useContext, createContext, useMemo } from 'react';
 import { IWorkout } from 'ts/definitions';
 
 export enum CreateWorkoutActionTypes {
-  ABC = 'abc',
-  XYZ = 'xyz',
+  UPDATE_GENERAL_DATA = 'GENERAL_DATA',
+  UPDATE_EXERCISES = 'EXERCISES',
 }
 
 interface ICreateWorkoutAction {
@@ -38,11 +38,16 @@ const CreateWorkoutContext = createContext<ICreateWorkoutContext>({
 
 function createWorkoutReducer(state: IWorkout, action: ICreateWorkoutAction) {
   switch (action.type) {
-    case 'abc': {
-      return { ...state, name: state.name + 'ABC' };
+    case 'GENERAL_DATA': {
+      return {
+        ...state,
+        name: action.payload.name,
+        category: action.payload.category,
+        description: action.payload.description,
+      };
     }
-    case 'xyz': {
-      return { ...state, name: state.name + 'XYZ' };
+    case 'EXERCISES': {
+      return { ...state, exercises: action.payload };
     }
     default: {
       throw new Error(`Unhandled action type: ${action.type}`);

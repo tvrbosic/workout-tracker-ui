@@ -22,10 +22,10 @@ export interface IExercise {
 }
 
 export interface IWorkout {
-  id: string;
+  id?: string;
   name: string;
   category: string;
-  date_created: string;
+  date_created?: string;
   description: string;
   exercises: IExercise[];
 }
