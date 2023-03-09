@@ -11,7 +11,7 @@ import { formatDate } from 'utils/utility';
 
 interface ITableData {
   name: string;
-  type: string;
+  category: string;
   date_created: string;
   num_exercises: number;
 }
@@ -28,7 +28,7 @@ export default function Workouts() {
       const workouts = query.data.reduce((acc: ITableData[], workout: IWorkout) => {
         acc.push({
           name: workout.name,
-          type: workout.type,
+          category: workout.category,
           date_created: formatDate(workout.date_created),
           num_exercises: workout.exercises.length,
         });
@@ -44,7 +44,7 @@ export default function Workouts() {
         <WorkoutsControlPanel />
         <Box>
           <WorkoutsTable
-            headers={['Name', 'Type', 'Date created', '# Exercises']}
+            headers={['Name', 'Category', 'Date created', '# Exercises']}
             data={workouts}
           />
         </Box>

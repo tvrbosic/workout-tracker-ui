@@ -11,19 +11,16 @@ interface IAuthContext {
   clearAuthToken: () => void;
 }
 
+interface IAuthProviderProps {
+  children?: React.ReactNode;
+}
+
 const AuthContext = createContext<IAuthContext>({
   token: '',
   user: null,
   setAuthToken: () => {},
   clearAuthToken: () => {},
 });
-
-// Export custom hook to use AuthContext
-export const useAuthContext = () => useContext(AuthContext);
-
-interface IAuthProviderProps {
-  children?: React.ReactNode;
-}
 
 // Export AuthContextProvider wrapper (used in App.tsx)
 export function AuthContextProvider({ ...children }: IAuthProviderProps) {
@@ -79,3 +76,6 @@ export function AuthContextProvider({ ...children }: IAuthProviderProps) {
   );
   return <AuthContext.Provider value={authContextObject} {...children} />;
 }
+
+// Export custom hook to use AuthContext
+export const useAuthContext = () => useContext(AuthContext);

@@ -36,6 +36,11 @@ const routes = {
     name: 'Workouts',
     type: 'private',
   },
+  createWorkouts: {
+    path: '/workouts/create',
+    name: 'Create Workouts',
+    type: 'private',
+  },
   programs: {
     path: '/programs',
     name: 'Programs',

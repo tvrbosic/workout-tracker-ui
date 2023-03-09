@@ -9,19 +9,24 @@ export interface IUser {
 }
 
 export interface IExercise {
+  id: string;
   name: string;
-  type: string;
-  muscle: string;
+  category: string;
   difficulty: string;
+  force: string | null;
+  mechanics: string | null;
+  equipment: string | null;
+  primary_muscle: string;
+  secondary_muscles: string[];
   instructions: string;
 }
 
 export interface IWorkout {
   id: string;
   name: string;
-  type: string;
+  category: string;
   date_created: string;
   description: string;
-  // user: IUser;
   exercises: IExercise[];
+  user?: IUser;
 }

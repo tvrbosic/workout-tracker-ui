@@ -1,5 +1,7 @@
-import { Box, Flex, Center, Divider } from '@chakra-ui/react';
+import { Box, Flex, Divider, Button } from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom';
 
+import routes from 'router/routes';
 import SearchInput from 'components/SearchInput';
 import DropdownMenu from 'components/DropdownMenu';
 import CustomDatePicker from 'components/CustomDatePicker';
@@ -16,8 +18,10 @@ const options = [
 
 // Basic react component
 function WorkoutsControlPanel() {
+  const navigate = useNavigate();
+
   return (
-    <Center bgColor={'gray.200'} py={3}>
+    <Flex bgColor={'gray.200'} px={8} py={3} justifyContent={'space-between'}>
       <Flex>
         <SearchInput placeholder="Search workouts..." />
         <Divider orientation="vertical" mx={2} />
@@ -25,11 +29,16 @@ function WorkoutsControlPanel() {
           <DropdownMenu placeholder="Select type" options={options} width={'100%'} />
         </Box>
         <Divider orientation="vertical" mx={2} />
-        <Box>
+        <Box minWidth={'118px'}>
           <CustomDatePicker />
         </Box>
       </Flex>
-    </Center>
+      <Box>
+        <Button variant={'outline'} onClick={() => navigate(routes.createWorkouts.path)}>
+          New workout
+        </Button>
+      </Box>
+    </Flex>
   );
 }
 

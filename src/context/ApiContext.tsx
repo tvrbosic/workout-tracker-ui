@@ -30,9 +30,6 @@ const ApiContext = React.createContext<{
   clearError: () => {},
 });
 
-// Export custom hook to use ApiContext
-export const useApiContext = () => useContext(ApiContext);
-
 // Create and export context provider
 export function ApiContextProvider({ ...children }: IApiContextProviderProps) {
   const { token, setAuthToken, clearAuthToken } = useAuthContext();
@@ -73,3 +70,6 @@ export function ApiContextProvider({ ...children }: IApiContextProviderProps) {
 
   return <ApiContext.Provider value={contextValue} {...children} />;
 }
+
+// Export custom hook to use ApiContext
+export const useApiContext = () => useContext(ApiContext);

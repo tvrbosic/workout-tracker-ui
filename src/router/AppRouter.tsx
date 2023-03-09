@@ -9,6 +9,7 @@ import Contact from 'screens/contact/Contact';
 import Dashboard from 'screens/dashboard/Dashboard';
 import Calendar from 'screens/calendar/Calendar';
 import Workouts from 'screens/workouts/Workouts';
+import CreateWorkout from 'screens/create-workout/CreateWorkout';
 import Programs from 'screens/programs/Programs';
 import Profile from 'screens/profile/Profile';
 import AuthenticatedRoute from 'components/AuthenticatedRoute';
@@ -43,6 +44,14 @@ function AppRouter() {
           element: (
             <AuthenticatedRoute>
               <Workouts />
+            </AuthenticatedRoute>
+          ),
+        },
+        {
+          path: routes.createWorkouts.path,
+          element: (
+            <AuthenticatedRoute>
+              <CreateWorkout />
             </AuthenticatedRoute>
           ),
         },
