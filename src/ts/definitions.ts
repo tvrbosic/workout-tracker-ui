@@ -28,5 +28,4 @@ export interface IWorkout {
   date_created: string;
   description: string;
   exercises: IExercise[];
-  user?: IUser;
 }
