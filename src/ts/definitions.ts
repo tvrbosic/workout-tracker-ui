@@ -29,3 +29,8 @@ export interface IWorkout {
   description: string;
   exercises: IExercise[];
 }
+
+export interface IDropdownOption {
+  id: string;
+  name: string;
+}

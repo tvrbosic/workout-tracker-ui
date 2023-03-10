@@ -10,35 +10,44 @@ import {
 } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 
+import { IDropdownOption } from 'ts/definitions';
 import { capitalizeFirstLetter } from 'utils/utility';
 
 interface IDropdownPropsMenu extends MenuButtonProps {
   placeholder?: string;
-  options: Array<{ id: string; name: string }>;
+  options: Array<IDropdownOption>;
+  onValueChange?: (option: IDropdownOption) => void;
+  preselectedValue?: IDropdownOption;
   isLoading: boolean;
-  onValueChange?: (option: { id: string; name: string }) => void;
 }
 
 function DropdownMenu({
   placeholder = 'Select option',
   options,
-  isLoading,
   onValueChange,
+  preselectedValue,
+  isLoading,
   ...rest
 }: IDropdownPropsMenu) {
-  const [displayValue, setDisplayValue] = useState(placeholder);
-  const [selectedOption, setSelectedOption] = useState({ id: '', name: '' });
+  const [selectedOption, setSelectedOption] = useState<IDropdownOption>(
+    preselectedValue || options[0]
+  );
 
-  const handleSelect = (option: { id: string; name: string }) => {
+  console.log(preselectedValue);
+
+  const handleSelect = (option: IDropdownOption) => {
     setSelectedOption(option);
-    setDisplayValue(capitalizeFirstLetter(option.name));
     onValueChange && onValueChange(option);
   };
 
   return (
     <Menu autoSelect={true}>
       <MenuButton as={Button} rightIcon={<ChevronDownIcon />} {...rest}>
-        {isLoading === true ? <Spinner size={'sm'} /> : displayValue}
+        {isLoading === true ? (
+          <Spinner size={'sm'} />
+        ) : (
+          capitalizeFirstLetter(selectedOption.name) || placeholder
+        )}
       </MenuButton>
       <MenuList width={'100%'} color={'gray.800'}>
         {!isLoading &&

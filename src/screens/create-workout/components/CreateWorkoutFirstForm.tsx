@@ -11,7 +11,7 @@ import {
 } from '@chakra-ui/react';
 import { useQuery } from 'react-query';
 
-import { IWorkout } from 'ts/definitions';
+import { IDropdownOption, IWorkout } from 'ts/definitions';
 import { useCreateWorkoutContext, CreateWorkoutActionTypes } from 'context/CreateWorkoutContext';
 import { useApiContext } from 'context/ApiContext';
 import DropdownMenu from 'components/DropdownMenu';
@@ -28,7 +28,7 @@ export default function CreateWorkoutFirstForm({ nextStep }: ICreateWorkoutFirst
     handleSubmit,
     control,
     formState: { errors },
-  } = useForm<IWorkout>();
+  } = useForm<IWorkout>({ defaultValues: state, mode: 'onSubmit' });
 
   const categoriesQuery = useQuery(['categories'], () => api.getCategories(), {
     staleTime: Infinity,
@@ -66,6 +66,7 @@ export default function CreateWorkoutFirstForm({ nextStep }: ICreateWorkoutFirst
                 placeholder="Select type"
                 options={categoriesQuery.data}
                 onValueChange={(option) => field.onChange(option)}
+                preselectedValue={field.value as unknown as IDropdownOption}
                 isLoading={!categoriesQuery.isSuccess}
                 width={'100%'}
               />
