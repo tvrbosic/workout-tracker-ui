@@ -26,7 +26,7 @@ function MainLayout() {
   }, [error, toast, clearError]);
 
   return (
-    <Flex flexDirection="column">
+    <Flex flexDirection="column" bgColor={'gray.50'}>
       <Header />
       <Box>
         <Outlet />

@@ -1,32 +1,47 @@
 import { useState } from 'react';
-import { Menu, MenuButton, Button, MenuList, MenuItem, MenuButtonProps } from '@chakra-ui/react';
+import {
+  Menu,
+  MenuButton,
+  Button,
+  MenuList,
+  MenuItem,
+  MenuButtonProps,
+  Spinner,
+} from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 
 interface IDropdownPropsMenu extends MenuButtonProps {
   placeholder?: string;
-  options: Array<{ value: string; label: string }>;
+  options: Array<{ id: string; name: string }>;
+  isLoading: boolean;
 }
 
-function DropdownMenu({ placeholder = 'Select option', options, ...rest }: IDropdownPropsMenu) {
+function DropdownMenu({
+  placeholder = 'Select option',
+  options,
+  isLoading,
+  ...rest
+}: IDropdownPropsMenu) {
   const [displayValue, setDisplayValue] = useState(placeholder);
-  const [selectedOption, setSelectedOption] = useState(options[0] || { value: '', label: '' });
+  const [selectedOption, setSelectedOption] = useState({ id: '', name: '' });
 
-  const handleSelect = (option: { value: string; label: string }) => {
+  const handleSelect = (option: { id: string; name: string }) => {
     setSelectedOption(option);
-    setDisplayValue(option.label);
+    setDisplayValue(option.name);
   };
 
   return (
     <Menu autoSelect={true}>
       <MenuButton as={Button} rightIcon={<ChevronDownIcon />} {...rest}>
-        {displayValue}
+        {isLoading === true ? <Spinner size={'sm'} /> : displayValue}
       </MenuButton>
       <MenuList width={'100%'}>
-        {options.map((option) => (
-          <MenuItem key={option.value} value={option.value} onClick={() => handleSelect(option)}>
-            {option.label}
-          </MenuItem>
-        ))}
+        {!isLoading &&
+          options.map((option) => (
+            <MenuItem key={option.id} value={option.id} onClick={() => handleSelect(option)}>
+              {option.name}
+            </MenuItem>
+          ))}
       </MenuList>
     </Menu>
   );

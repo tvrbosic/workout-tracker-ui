@@ -18,8 +18,13 @@ export default class Api {
     return response.data;
   };
 
+  getCategories = async () => {
+    const response = await this.client.get('api/v1/category/');
+    return response.data;
+  };
+
   getWorkouts = async () => {
-    const response = await this.client.get('api/v1/workouts/');
+    const response = await this.client.get('api/v1/workout/');
     return response.data;
   };
 }

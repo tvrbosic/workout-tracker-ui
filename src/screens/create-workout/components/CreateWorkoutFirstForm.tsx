@@ -6,12 +6,15 @@ import {
   Input,
   Textarea,
   Button,
-  ButtonGroup,
+  Flex,
   FormErrorMessage,
 } from '@chakra-ui/react';
+import { useQuery } from 'react-query';
 
-import { useCreateWorkoutContext, CreateWorkoutActionTypes } from 'context/CreateWorkoutContext';
 import { IWorkout } from 'ts/definitions';
+import { useCreateWorkoutContext, CreateWorkoutActionTypes } from 'context/CreateWorkoutContext';
+import { useApiContext } from 'context/ApiContext';
+import DropdownMenu from 'components/DropdownMenu';
 
 interface ICreateWorkoutFirstFormProps {
   nextStep: () => void;
@@ -19,11 +22,16 @@ interface ICreateWorkoutFirstFormProps {
 
 export default function CreateWorkoutFirstForm({ nextStep }: ICreateWorkoutFirstFormProps) {
   const { state, dispatch } = useCreateWorkoutContext();
+  const { api } = useApiContext();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<IWorkout>();
+
+  const categoriesQuery = useQuery(['categories'], () => api.getCategories(), {
+    staleTime: Infinity,
+  });
 
   const saveData = async (data: IWorkout) => {
     console.log(data);
@@ -48,9 +56,12 @@ export default function CreateWorkoutFirstForm({ nextStep }: ICreateWorkoutFirst
 
         <FormControl isInvalid={!!errors.category}>
           <FormLabel htmlFor="category">Category</FormLabel>
-          <Input
-            type="text"
-            variant="filled"
+
+          <DropdownMenu
+            placeholder="Select type"
+            options={categoriesQuery.data}
+            width={'100%'}
+            isLoading={!categoriesQuery.isSuccess}
             {...register('category', {
               required: 'Category field must not be empty!',
             })}
@@ -69,10 +80,14 @@ export default function CreateWorkoutFirstForm({ nextStep }: ICreateWorkoutFirst
           <FormErrorMessage>{errors.description && errors.description.message}</FormErrorMessage>
         </FormControl>
 
-        <ButtonGroup>
-          <Button isDisabled={true}>Back</Button>
-          <Button type={'submit'}>Next</Button>
-        </ButtonGroup>
+        <Flex justifyContent={'space-between'}>
+          <Button isDisabled={true} width={'48%'}>
+            Back
+          </Button>
+          <Button type={'submit'} width={'48%'}>
+            Next
+          </Button>
+        </Flex>
       </Stack>
     </form>
   );

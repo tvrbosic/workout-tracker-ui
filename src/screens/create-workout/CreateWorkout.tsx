@@ -31,7 +31,7 @@ function CreateWorkout() {
             boxShadow={'lg'}
             p={8}
           >
-            <Progress value={progress} mb="5%" mx="5%"></Progress>
+            <Progress value={progress} mb="5%" mx="5%" rounded={'md'}></Progress>
             {step === 1 ? (
               <CreateWorkoutFirstForm nextStep={nextStep} />
             ) : (

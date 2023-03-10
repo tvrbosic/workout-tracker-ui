@@ -1,24 +1,21 @@
 import { Box, Flex, Divider, Button } from '@chakra-ui/react';
+import { useQuery } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 
 import routes from 'router/routes';
+import { useApiContext } from 'context/ApiContext';
 import SearchInput from 'components/SearchInput';
 import DropdownMenu from 'components/DropdownMenu';
 import CustomDatePicker from 'components/CustomDatePicker';
 
-// Mocked options data
-const options = [
-  { value: '0', label: 'All workouts' },
-  { value: '1', label: 'Option 1' },
-  { value: '2', label: 'Option 2' },
-  { value: '3', label: 'Option 3' },
-  { value: '4', label: 'Option 4' },
-  { value: '5', label: 'Option 5' },
-];
-
 // Basic react component
 function WorkoutsControlPanel() {
+  const { api } = useApiContext();
   const navigate = useNavigate();
+
+  const categoriesQuery = useQuery(['categories'], () => api.getCategories(), {
+    staleTime: Infinity,
+  });
 
   return (
     <Flex bgColor={'gray.200'} px={8} py={3} justifyContent={'space-between'}>
@@ -26,7 +23,12 @@ function WorkoutsControlPanel() {
         <SearchInput placeholder="Search workouts..." />
         <Divider orientation="vertical" mx={2} />
         <Box>
-          <DropdownMenu placeholder="Select type" options={options} width={'100%'} />
+          <DropdownMenu
+            placeholder="Select type"
+            width={'100%'}
+            options={categoriesQuery.data}
+            isLoading={!categoriesQuery.isSuccess}
+          />
         </Box>
         <Divider orientation="vertical" mx={2} />
         <Box minWidth={'118px'}>
