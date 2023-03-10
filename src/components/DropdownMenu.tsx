@@ -10,6 +10,8 @@ import {
 } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 
+import { capitalizeFirstLetter } from 'utils/utility';
+
 interface IDropdownPropsMenu extends MenuButtonProps {
   placeholder?: string;
   options: Array<{ id: string; name: string }>;
@@ -35,11 +37,11 @@ function DropdownMenu({
       <MenuButton as={Button} rightIcon={<ChevronDownIcon />} {...rest}>
         {isLoading === true ? <Spinner size={'sm'} /> : displayValue}
       </MenuButton>
-      <MenuList width={'100%'}>
+      <MenuList width={'100%'} color={'gray.800'}>
         {!isLoading &&
           options.map((option) => (
             <MenuItem key={option.id} value={option.id} onClick={() => handleSelect(option)}>
-              {option.name}
+              {capitalizeFirstLetter(option.name)}
             </MenuItem>
           ))}
       </MenuList>
