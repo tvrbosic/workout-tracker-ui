@@ -130,3 +130,23 @@ export const IconButton = defineStyleConfig({
     variant: 'solid',
   },
 });
+
+export const Textarea = defineStyleConfig({
+  variants: {
+    filled: {
+      color: 'gray.100',
+      bg: 'whiteAlpha.100',
+      border: 0,
+      _focus: {
+        bg: 'whiteAlpha.200',
+        boxShadow: 'none',
+      },
+      _hover: {
+        bg: 'whiteAlpha.200',
+      },
+    },
+  },
+  defaultProps: {
+    variant: 'filled',
+  },
+});

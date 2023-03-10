@@ -35,7 +35,6 @@ export default function CreateWorkoutFirstForm({ nextStep }: ICreateWorkoutFirst
   });
 
   const saveData = async (data: IWorkout) => {
-    console.log(data);
     dispatch({ type: CreateWorkoutActionTypes.UPDATE_GENERAL_DATA, payload: data });
     nextStep();
   };
@@ -78,6 +77,8 @@ export default function CreateWorkoutFirstForm({ nextStep }: ICreateWorkoutFirst
         <FormControl isInvalid={!!errors.description}>
           <FormLabel htmlFor="description">Description</FormLabel>
           <Textarea
+            resize={'none'}
+            minHeight={'150px'}
             variant="filled"
             {...register('description', {
               required: 'Description field must not be empty!',

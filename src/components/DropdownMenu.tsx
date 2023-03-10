@@ -30,10 +30,8 @@ function DropdownMenu({
   ...rest
 }: IDropdownPropsMenu) {
   const [selectedOption, setSelectedOption] = useState<IDropdownOption>(
-    preselectedValue || options[0]
+    preselectedValue || { id: '0', name: placeholder }
   );
-
-  console.log(preselectedValue);
 
   const handleSelect = (option: IDropdownOption) => {
     setSelectedOption(option);
