@@ -5,8 +5,8 @@ import {
   Button,
   MenuList,
   MenuItem,
-  MenuButtonProps,
   Spinner,
+  MenuButtonProps,
 } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 
@@ -16,12 +16,14 @@ interface IDropdownPropsMenu extends MenuButtonProps {
   placeholder?: string;
   options: Array<{ id: string; name: string }>;
   isLoading: boolean;
+  onValueChange?: (option: { id: string; name: string }) => void;
 }
 
 function DropdownMenu({
   placeholder = 'Select option',
   options,
   isLoading,
+  onValueChange,
   ...rest
 }: IDropdownPropsMenu) {
   const [displayValue, setDisplayValue] = useState(placeholder);
@@ -29,7 +31,8 @@ function DropdownMenu({
 
   const handleSelect = (option: { id: string; name: string }) => {
     setSelectedOption(option);
-    setDisplayValue(option.name);
+    setDisplayValue(capitalizeFirstLetter(option.name));
+    onValueChange && onValueChange(option);
   };
 
   return (

@@ -25,7 +25,6 @@ function WorkoutsControlPanel() {
         <Box>
           <DropdownMenu
             placeholder="Select type"
-            width={'100%'}
             options={categoriesQuery.data}
             isLoading={!categoriesQuery.isSuccess}
           />

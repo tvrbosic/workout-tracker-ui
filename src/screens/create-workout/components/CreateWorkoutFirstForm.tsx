@@ -1,4 +1,4 @@
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import {
   Stack,
   FormLabel,
@@ -26,6 +26,7 @@ export default function CreateWorkoutFirstForm({ nextStep }: ICreateWorkoutFirst
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors },
   } = useForm<IWorkout>();
 
@@ -56,15 +57,19 @@ export default function CreateWorkoutFirstForm({ nextStep }: ICreateWorkoutFirst
 
         <FormControl isInvalid={!!errors.category}>
           <FormLabel htmlFor="category">Category</FormLabel>
-
-          <DropdownMenu
-            placeholder="Select type"
-            options={categoriesQuery.data}
-            width={'100%'}
-            isLoading={!categoriesQuery.isSuccess}
-            {...register('category', {
-              required: 'Category field must not be empty!',
-            })}
+          <Controller
+            control={control}
+            name="category"
+            rules={{ required: 'Category field must not be empty!' }}
+            render={({ field }) => (
+              <DropdownMenu
+                placeholder="Select type"
+                options={categoriesQuery.data}
+                onValueChange={(option) => field.onChange(option)}
+                isLoading={!categoriesQuery.isSuccess}
+                width={'100%'}
+              />
+            )}
           />
           <FormErrorMessage>{errors.category && errors.category.message}</FormErrorMessage>
         </FormControl>
