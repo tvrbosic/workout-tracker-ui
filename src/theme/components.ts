@@ -34,6 +34,9 @@ export const Button = defineStyleConfig({
       color: 'gray.100',
       _hover: {
         bg: 'green.600',
+        _disabled: {
+          color: 'gray.800',
+        },
       },
     },
   },
