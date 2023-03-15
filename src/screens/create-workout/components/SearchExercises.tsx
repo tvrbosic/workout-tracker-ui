@@ -6,6 +6,7 @@ import { useApiContext } from 'context/ApiContext';
 import { IExercise } from 'ts/definitions';
 import SearchInput from 'components/SearchInput';
 import DropdownMenu from 'components/DropdownMenu';
+import ExerciseListItem from 'screens/create-workout/components/ExerciseListItem';
 
 function SearchExercises() {
   const { api } = useApiContext();
@@ -78,15 +79,7 @@ function SearchExercises() {
       >
         {!exercisesQuery.isLoading &&
           exercisesQuery.data.map((exercise: IExercise) => (
-            <Box
-              key={exercise.id}
-              py={2}
-              px={4}
-              transition={'all 200ms linear'}
-              _hover={{ bgColor: 'gray.600', cursor: 'pointer' }}
-            >
-              {exercise.name}
-            </Box>
+            <ExerciseListItem key={exercise.id} exercise={exercise} />
           ))}
       </GridItem>
     </Grid>
