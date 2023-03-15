@@ -1,12 +1,11 @@
 import { useEffect } from 'react';
 import { useQuery } from 'react-query';
-import { Grid, GridItem, Box } from '@chakra-ui/react';
+import { Grid, GridItem, Center, Spinner } from '@chakra-ui/react';
 
 import { useApiContext } from 'context/ApiContext';
-import { IExercise } from 'ts/definitions';
 import SearchInput from 'components/SearchInput';
 import DropdownMenu from 'components/DropdownMenu';
-import ExerciseListItem from 'screens/create-workout/components/ExerciseListItem';
+import ExerciseList from 'screens/create-workout/components/ExercisesList';
 
 function SearchExercises() {
   const { api } = useApiContext();
@@ -31,7 +30,7 @@ function SearchExercises() {
       gap={3}
     >
       <GridItem>
-        <SearchInput />
+        <SearchInput variant={'filled'} />
       </GridItem>
       <GridItem>
         <DropdownMenu
@@ -77,10 +76,11 @@ function SearchExercises() {
           },
         }}
       >
-        {!exercisesQuery.isLoading &&
-          exercisesQuery.data.map((exercise: IExercise) => (
-            <ExerciseListItem key={exercise.id} exercise={exercise} />
-          ))}
+        <ExerciseList
+          as={GridItem}
+          isLoading={exercisesQuery.isLoading}
+          exercises={exercisesQuery.data}
+        />
       </GridItem>
     </Grid>
   );

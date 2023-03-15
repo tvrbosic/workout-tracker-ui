@@ -59,12 +59,12 @@ export const Input = inputHelpers.defineMultiStyleConfig({
   variants: {
     outline: {
       addon: {
-        color: 'gray.800',
-        bgColor: 'green.300',
+        color: 'gray.100',
+        bgColor: 'green.500',
         border: '1px solid',
         borderColor: 'green.500',
         _hover: {
-          bgColor: 'green.400',
+          bgColor: 'green.600',
         },
       },
       field: {
@@ -80,6 +80,15 @@ export const Input = inputHelpers.defineMultiStyleConfig({
       },
     },
     filled: {
+      addon: {
+        color: 'gray.100',
+        bgColor: 'green.500',
+        border: '1px solid',
+        borderColor: 'green.500',
+        _hover: {
+          bgColor: 'green.600',
+        },
+      },
       field: {
         color: 'gray.100',
         bg: 'whiteAlpha.100',
