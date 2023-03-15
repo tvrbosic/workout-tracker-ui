@@ -10,6 +10,10 @@ import ExerciseList from 'screens/create-workout/components/ExercisesList';
 function SearchExercises() {
   const { api } = useApiContext();
 
+  const musclesQuery = useQuery(['muscles'], () => api.getMuscles(), {
+    staleTime: Infinity,
+  });
+
   const categoriesQuery = useQuery(['categories'], () => api.getCategories(), {
     staleTime: Infinity,
   });
@@ -42,10 +46,10 @@ function SearchExercises() {
       </GridItem>
       <GridItem>
         <DropdownMenu
-          placeholder="Select type"
+          placeholder="Select muscle"
           width={'100%'}
-          options={categoriesQuery.data}
-          isLoading={!categoriesQuery.isSuccess}
+          options={musclesQuery.data}
+          isLoading={!musclesQuery.isSuccess}
         />
       </GridItem>
       <GridItem>

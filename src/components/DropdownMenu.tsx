@@ -47,7 +47,7 @@ function DropdownMenu({
           capitalizeFirstLetter(selectedOption.name) || placeholder
         )}
       </MenuButton>
-      <MenuList width={'100%'} color={'gray.800'}>
+      <MenuList width={'100%'} color={'gray.800'} overflow="auto" maxHeight={{ base: '15rem' }}>
         {!isLoading &&
           options.map((option) => (
             <MenuItem key={option.id} value={option.id} onClick={() => handleSelect(option)}>

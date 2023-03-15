@@ -4,8 +4,8 @@ import {
   FormLabel,
   FormControl,
   Input,
+  Flex,
   Button,
-  ButtonGroup,
   FormErrorMessage,
 } from '@chakra-ui/react';
 import { useCreateWorkoutContext, CreateWorkoutActionTypes } from 'context/CreateWorkoutContext';
@@ -46,10 +46,15 @@ export default function CreateWorkoutSecondForm({ previousStep }: ICreateWorkout
           <FormErrorMessage>{errors.name && errors.name.message}</FormErrorMessage>
         </FormControl>
 
-        <ButtonGroup>
-          <Button onClick={previousStep}>Back</Button>
-          <Button type={'submit'}>Finish</Button>
-        </ButtonGroup>
+        <Flex justifyContent={'space-between'}>
+          <Button onClick={previousStep} width={'48%'}>
+            Back
+          </Button>
+
+          <Button type={'submit'} width={'48%'}>
+            Finish
+          </Button>
+        </Flex>
       </Stack>
     </form>
   );
