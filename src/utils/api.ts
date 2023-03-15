@@ -23,6 +23,12 @@ export default class Api {
     return response.data;
   };
 
+  getExercises = async () => {
+    console.log('Get exercises triggered');
+    const response = await this.client.get('api/v1/exercise/');
+    return response.data;
+  };
+
   getWorkouts = async () => {
     const response = await this.client.get('api/v1/workout/');
     return response.data;

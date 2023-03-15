@@ -24,7 +24,7 @@ export default function Workouts() {
 
   // Normalize data for table
   useEffect(() => {
-    if (query.isFetched && !query.isError) {
+    if (!query.isLoading && !query.isError) {
       const workouts = query.data.reduce((acc: ITableData[], workout: IWorkout) => {
         acc.push({
           name: workout.name,
@@ -36,7 +36,7 @@ export default function Workouts() {
       }, []);
       setWorkouts(workouts);
     }
-  }, [query.data, query.isFetched, query.isError]);
+  }, [query.data, query.isLoading, query.isError]);
 
   return (
     <HeaderMarginLayout>

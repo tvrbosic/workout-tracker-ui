@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useLayoutEffect, useMemo, useState } from 'react';
 
 import axios from 'axios';
-import Api from 'utils/Api';
+import Api from 'utils/api';
 import { useAuthContext } from 'context/AuthContext';
 
 interface IApiContextProviderProps {
