@@ -27,6 +27,7 @@ export function AuthContextProvider({ ...children }: IAuthProviderProps) {
   const localStorageController = useLocalStorage();
   const [appUser, setAppUser] = useState<IUser | null>(null);
   const [token, setToken] = useState<string>('');
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   // On application start check if user token already exists in local storage and set it to context
   useEffect(() => {
@@ -34,6 +35,7 @@ export function AuthContextProvider({ ...children }: IAuthProviderProps) {
     if (token) {
       setToken(token);
     }
+    setIsLoading(false);
   }, [localStorageController]);
 
   // When token changes extract singed in user data and set to context
@@ -74,7 +76,8 @@ export function AuthContextProvider({ ...children }: IAuthProviderProps) {
     }),
     [token, appUser, setAuthToken, clearAuthToken]
   );
-  return <AuthContext.Provider value={authContextObject} {...children} />;
+  return isLoading ? null : <AuthContext.Provider value={authContextObject} {...children} />;
+  //return <AuthContext.Provider value={authContextObject} {...children} />;
 }
 
 // Export custom hook to use AuthContext
