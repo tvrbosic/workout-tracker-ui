@@ -1,14 +1,50 @@
-import { useEffect } from 'react';
+import { useReducer } from 'react';
 import { useQuery } from 'react-query';
-import { Grid, GridItem, Center, Spinner } from '@chakra-ui/react';
+import { Grid, GridItem } from '@chakra-ui/react';
 
 import { useApiContext } from 'context/ApiContext';
+import { IExerciseFilters } from 'ts/definitions';
 import SearchInput from 'components/SearchInput';
 import DropdownMenu from 'components/DropdownMenu';
 import ExerciseList from 'screens/create-workout/components/ExercisesList';
 
+export enum ExerciseFilterActionTypes {
+  UPDATE_CATEGORY = 'CATEGORY',
+  UPDATE_MUSCLE = 'MUSCLE',
+  UPDATE_DIFFICULTY = 'DIFFICULTY',
+}
+
+interface IExerciseFilterAction {
+  type: ExerciseFilterActionTypes;
+  payload?: any;
+}
+
+const initialState: IExerciseFilters = {
+  category: null,
+  muscle: null,
+  difficulty: null,
+};
+
+function exerciseFilterReducer(state: IExerciseFilters, action: IExerciseFilterAction) {
+  switch (action.type) {
+    case ExerciseFilterActionTypes.UPDATE_CATEGORY: {
+      return { ...state, category: action.payload };
+    }
+    case ExerciseFilterActionTypes.UPDATE_MUSCLE: {
+      return { ...state, muscle: action.payload };
+    }
+    case ExerciseFilterActionTypes.UPDATE_DIFFICULTY: {
+      return { ...state, difficulty: action.payload };
+    }
+    default: {
+      throw new Error(`Unhandled action type: ${action.type}`);
+    }
+  }
+}
+
 function SearchExercises() {
   const { api } = useApiContext();
+  const [exerciseFilters, dispatch] = useReducer(exerciseFilterReducer, initialState);
 
   const musclesQuery = useQuery(['muscles'], () => api.getMuscles(), {
     staleTime: Infinity,
@@ -22,13 +58,9 @@ function SearchExercises() {
     staleTime: Infinity,
   });
 
-  const exercisesQuery = useQuery(['exercises'], () => api.getExercises(), {
+  const exercisesQuery = useQuery(['exercises'], () => api.getExercises(exerciseFilters), {
     staleTime: Infinity,
   });
-
-  useEffect(() => {
-    console.log(exercisesQuery.data);
-  }, [exercisesQuery.data]);
 
   return (
     <Grid

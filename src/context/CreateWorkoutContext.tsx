@@ -38,7 +38,7 @@ const CreateWorkoutContext = createContext<ICreateWorkoutContext>({
 
 function createWorkoutReducer(state: IWorkout, action: ICreateWorkoutAction) {
   switch (action.type) {
-    case 'GENERAL_DATA': {
+    case CreateWorkoutActionTypes.UPDATE_GENERAL_DATA: {
       return {
         ...state,
         name: action.payload.name,
@@ -46,7 +46,7 @@ function createWorkoutReducer(state: IWorkout, action: ICreateWorkoutAction) {
         description: action.payload.description,
       };
     }
-    case 'EXERCISES': {
+    case CreateWorkoutActionTypes.UPDATE_EXERCISES: {
       return { ...state, exercises: action.payload };
     }
     default: {
@@ -56,7 +56,7 @@ function createWorkoutReducer(state: IWorkout, action: ICreateWorkoutAction) {
 }
 
 export function CreateWorkoutProvider({ children }: ICreateWorkoutProviderProps) {
-  const [state, dispatch] = useReducer(createWorkoutReducer, initialState as IWorkout);
+  const [state, dispatch] = useReducer(createWorkoutReducer, initialState);
   // Memoize
   const value = useMemo(() => ({ state, dispatch }), [state, dispatch]);
   return <CreateWorkoutContext.Provider value={value}>{children}</CreateWorkoutContext.Provider>;

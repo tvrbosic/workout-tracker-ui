@@ -1,6 +1,6 @@
 import { AxiosInstance } from 'axios';
 
-import { ILoginCredentials } from 'ts/definitions';
+import { ILoginCredentials, IExerciseFilters } from 'ts/definitions';
 
 export default class Api {
   client: AxiosInstance;
@@ -33,9 +33,12 @@ export default class Api {
     return response.data;
   };
 
-  getExercises = async () => {
-    console.log('Get exercises triggered');
-    const response = await this.client.get('api/v1/exercise/');
+  getExercises = async (
+    filters: IExerciseFilters = { category: null, difficulty: null, muscle: null }
+  ) => {
+    const response = await this.client.get('api/v1/exercise/', {
+      params: filters,
+    });
     return response.data;
   };
 
