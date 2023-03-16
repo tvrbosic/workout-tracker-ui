@@ -28,6 +28,11 @@ export default class Api {
     return response.data;
   };
 
+  getDifficulties = async () => {
+    const response = await this.client.get('api/v1/difficulty/');
+    return response.data;
+  };
+
   getExercises = async () => {
     console.log('Get exercises triggered');
     const response = await this.client.get('api/v1/exercise/');

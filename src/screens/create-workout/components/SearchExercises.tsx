@@ -18,6 +18,10 @@ function SearchExercises() {
     staleTime: Infinity,
   });
 
+  const difficultiesQuery = useQuery(['difficulties'], () => api.getDifficulties(), {
+    staleTime: Infinity,
+  });
+
   const exercisesQuery = useQuery(['exercises'], () => api.getExercises(), {
     staleTime: Infinity,
   });
@@ -38,7 +42,7 @@ function SearchExercises() {
       </GridItem>
       <GridItem>
         <DropdownMenu
-          placeholder="Select type"
+          placeholder="Filter by type"
           width={'100%'}
           options={categoriesQuery.data}
           isLoading={!categoriesQuery.isSuccess}
@@ -46,7 +50,7 @@ function SearchExercises() {
       </GridItem>
       <GridItem>
         <DropdownMenu
-          placeholder="Select muscle"
+          placeholder="Filter by muscle"
           width={'100%'}
           options={musclesQuery.data}
           isLoading={!musclesQuery.isSuccess}
@@ -54,10 +58,10 @@ function SearchExercises() {
       </GridItem>
       <GridItem>
         <DropdownMenu
-          placeholder="Select type"
+          placeholder="Filter by difficulty"
           width={'100%'}
-          options={categoriesQuery.data}
-          isLoading={!categoriesQuery.isSuccess}
+          options={difficultiesQuery.data}
+          isLoading={!difficultiesQuery.isSuccess}
         />
       </GridItem>
       <GridItem
