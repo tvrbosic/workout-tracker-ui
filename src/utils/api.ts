@@ -34,7 +34,7 @@ export default class Api {
   };
 
   getExercises = async (
-    filters: IExerciseFilters = { category: null, difficulty: null, muscle: null }
+    filters: IExerciseFilters = { name: null, category: null, difficulty: null, muscle: null }
   ) => {
     const response = await this.client.get('api/v1/exercise/', {
       params: filters,
