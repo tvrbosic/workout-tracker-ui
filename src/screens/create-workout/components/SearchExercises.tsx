@@ -30,7 +30,7 @@ const initialState: IExerciseFilters = {
 function exerciseFilterReducer(state: IExerciseFilters, action: IExerciseFilterAction) {
   switch (action.type) {
     case ExerciseFilterActionTypes.NAME_FILTER: {
-      return { ...state, category: action.payload };
+      return { ...state, name: action.payload };
     }
     case ExerciseFilterActionTypes.CATEGORY_FILTER: {
       return { ...state, category: action.payload };
@@ -63,9 +63,13 @@ function SearchExercises() {
     staleTime: Infinity,
   });
 
-  const exercisesQuery = useQuery(['exercises'], () => api.getExercises(exerciseFilters), {
-    staleTime: Infinity,
-  });
+  const exercisesQuery = useQuery(
+    ['exercises', exerciseFilters],
+    () => api.getExercises(exerciseFilters),
+    {
+      staleTime: Infinity,
+    }
+  );
 
   const handleSearchChange = (searchValue: string) => {
     dispatch({ type: ExerciseFilterActionTypes.NAME_FILTER, payload: searchValue });
@@ -74,7 +78,7 @@ function SearchExercises() {
   return (
     <Grid
       height={'20rem'}
-      templateRows={{ base: '1fr 1fr 3fr)' }}
+      templateRows={{ base: '1fr 1fr 3fr' }}
       templateColumns={{ base: 'repeat(2,1fr)' }}
       gap={3}
     >
@@ -129,6 +133,7 @@ function SearchExercises() {
           as={GridItem}
           isLoading={exercisesQuery.isLoading}
           exercises={exercisesQuery.data}
+          height={'100%'}
         />
       </GridItem>
     </Grid>

@@ -18,7 +18,7 @@ function ExerciseList({ isLoading, exercises, ...rest }: IExerciseListProps) {
           ))}
         </>
       ) : (
-        <Center height={'100%'} {...rest}>
+        <Center {...rest}>
           <Spinner color="green.500" />
         </Center>
       )}
