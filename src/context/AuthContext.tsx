@@ -2,7 +2,7 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useState } 
 
 import { IUser } from 'ts/definitions';
 import { useLocalStorage } from 'hooks/useLocalStorage';
-import parseJwt from 'utils/parseJwt';
+import { parseJwt } from 'utils/utility';
 
 interface IAuthContext {
   token: string;

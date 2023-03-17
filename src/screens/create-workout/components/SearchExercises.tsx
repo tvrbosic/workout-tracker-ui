@@ -9,9 +9,10 @@ import DropdownMenu from 'components/DropdownMenu';
 import ExerciseList from 'screens/create-workout/components/ExercisesList';
 
 export enum ExerciseFilterActionTypes {
-  UPDATE_CATEGORY = 'CATEGORY',
-  UPDATE_MUSCLE = 'MUSCLE',
-  UPDATE_DIFFICULTY = 'DIFFICULTY',
+  NAME_FILTER = 'NAME',
+  CATEGORY_FILTER = 'CATEGORY',
+  MUSCLE_FILTER = 'MUSCLE',
+  DIFFICULTY_FILTER = 'DIFFICULTY',
 }
 
 interface IExerciseFilterAction {
@@ -20,6 +21,7 @@ interface IExerciseFilterAction {
 }
 
 const initialState: IExerciseFilters = {
+  name: null,
   category: null,
   muscle: null,
   difficulty: null,
@@ -27,13 +29,16 @@ const initialState: IExerciseFilters = {
 
 function exerciseFilterReducer(state: IExerciseFilters, action: IExerciseFilterAction) {
   switch (action.type) {
-    case ExerciseFilterActionTypes.UPDATE_CATEGORY: {
+    case ExerciseFilterActionTypes.NAME_FILTER: {
       return { ...state, category: action.payload };
     }
-    case ExerciseFilterActionTypes.UPDATE_MUSCLE: {
+    case ExerciseFilterActionTypes.CATEGORY_FILTER: {
+      return { ...state, category: action.payload };
+    }
+    case ExerciseFilterActionTypes.MUSCLE_FILTER: {
       return { ...state, muscle: action.payload };
     }
-    case ExerciseFilterActionTypes.UPDATE_DIFFICULTY: {
+    case ExerciseFilterActionTypes.DIFFICULTY_FILTER: {
       return { ...state, difficulty: action.payload };
     }
     default: {
@@ -62,6 +67,10 @@ function SearchExercises() {
     staleTime: Infinity,
   });
 
+  const handleSearchChange = (searchValue: string) => {
+    dispatch({ type: ExerciseFilterActionTypes.NAME_FILTER, payload: searchValue });
+  };
+
   return (
     <Grid
       height={'20rem'}
@@ -70,7 +79,7 @@ function SearchExercises() {
       gap={3}
     >
       <GridItem>
-        <SearchInput variant={'filled'} />
+        <SearchInput variant={'filled'} handleChange={handleSearchChange} />
       </GridItem>
       <GridItem>
         <DropdownMenu

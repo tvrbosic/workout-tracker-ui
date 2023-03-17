@@ -36,6 +36,7 @@ export interface IDropdownOption {
 }
 
 export interface IExerciseFilters {
+  name: string | null;
   category: number | null;
   difficulty: number | null;
   muscle: number | null;
