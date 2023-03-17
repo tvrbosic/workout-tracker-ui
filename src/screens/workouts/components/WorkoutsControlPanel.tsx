@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 import routes from 'router/routes';
 import { useApiContext } from 'context/ApiContext';
+import { IDropdownOption } from 'ts/definitions';
 import SearchInput from 'components/SearchInput';
 import DropdownMenu from 'components/DropdownMenu';
 import CustomDatePicker from 'components/CustomDatePicker';
@@ -17,6 +18,11 @@ function WorkoutsControlPanel() {
     staleTime: Infinity,
   });
 
+  const categoryChangeHandler = (category: IDropdownOption) => {
+    // TODO: implement
+    console.log('categoryChangeHandler');
+  };
+
   return (
     <Flex bgColor={'gray.200'} px={8} py={3} justifyContent={'space-between'}>
       <Flex>
@@ -27,6 +33,7 @@ function WorkoutsControlPanel() {
             placeholder="Select type"
             options={categoriesQuery.data}
             isLoading={!categoriesQuery.isSuccess}
+            onValueChange={categoryChangeHandler}
           />
         </Box>
         <Divider orientation="vertical" mx={2} />

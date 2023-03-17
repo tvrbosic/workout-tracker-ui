@@ -3,7 +3,7 @@ import { useQuery } from 'react-query';
 import { Grid, GridItem } from '@chakra-ui/react';
 
 import { useApiContext } from 'context/ApiContext';
-import { IExerciseFilters } from 'ts/definitions';
+import { IExerciseFilters, IDropdownOption } from 'ts/definitions';
 import SearchInput from 'components/SearchInput';
 import DropdownMenu from 'components/DropdownMenu';
 import ExerciseList from 'screens/create-workout/components/ExercisesList';
@@ -71,8 +71,20 @@ function SearchExercises() {
     }
   );
 
-  const handleSearchChange = (searchValue: string) => {
+  const searchChangeHandler = (searchValue: string) => {
     dispatch({ type: ExerciseFilterActionTypes.NAME_FILTER, payload: searchValue });
+  };
+
+  const categoryChangeHandler = (category: IDropdownOption) => {
+    dispatch({ type: ExerciseFilterActionTypes.CATEGORY_FILTER, payload: category.id });
+  };
+
+  const muscleChangeHandler = (muscle: IDropdownOption) => {
+    dispatch({ type: ExerciseFilterActionTypes.MUSCLE_FILTER, payload: muscle.id });
+  };
+
+  const difficultyChangeHandler = (difficulty: IDropdownOption) => {
+    dispatch({ type: ExerciseFilterActionTypes.DIFFICULTY_FILTER, payload: difficulty.id });
   };
 
   return (
@@ -83,7 +95,7 @@ function SearchExercises() {
       gap={3}
     >
       <GridItem>
-        <SearchInput variant={'filled'} handleChange={handleSearchChange} />
+        <SearchInput variant={'filled'} handleChange={searchChangeHandler} />
       </GridItem>
       <GridItem>
         <DropdownMenu
@@ -91,6 +103,7 @@ function SearchExercises() {
           width={'100%'}
           options={categoriesQuery.data}
           isLoading={!categoriesQuery.isSuccess}
+          onValueChange={categoryChangeHandler}
         />
       </GridItem>
       <GridItem>
@@ -99,6 +112,7 @@ function SearchExercises() {
           width={'100%'}
           options={musclesQuery.data}
           isLoading={!musclesQuery.isSuccess}
+          onValueChange={muscleChangeHandler}
         />
       </GridItem>
       <GridItem>
@@ -107,6 +121,7 @@ function SearchExercises() {
           width={'100%'}
           options={difficultiesQuery.data}
           isLoading={!difficultiesQuery.isSuccess}
+          onValueChange={difficultyChangeHandler}
         />
       </GridItem>
       <GridItem

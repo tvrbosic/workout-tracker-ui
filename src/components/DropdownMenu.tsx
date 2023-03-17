@@ -16,7 +16,7 @@ import { capitalizeFirstLetter } from 'utils/utility';
 interface IDropdownPropsMenu extends MenuButtonProps {
   placeholder?: string;
   options: Array<IDropdownOption>;
-  onValueChange?: (option: IDropdownOption) => void;
+  onValueChange: (option: IDropdownOption) => void;
   preselectedValue?: IDropdownOption;
   isLoading: boolean;
 }
@@ -35,7 +35,7 @@ function DropdownMenu({
 
   const handleSelect = (option: IDropdownOption) => {
     setSelectedOption(option);
-    onValueChange && onValueChange(option);
+    onValueChange(option);
   };
 
   return (
