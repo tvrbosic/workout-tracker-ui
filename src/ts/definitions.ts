@@ -1,3 +1,10 @@
+// ########## General ##########
+export interface IDropdownOption {
+  id: string;
+  name: string;
+}
+
+// ########## Authentication ##########
 export interface ILoginCredentials {
   email: string;
   password: string;
@@ -8,6 +15,7 @@ export interface IUser {
   email: string;
 }
 
+// ########## Exercise ##########
 export interface IExercise {
   id: string;
   name: string;
@@ -21,18 +29,9 @@ export interface IExercise {
   instructions: string;
 }
 
-export interface IWorkout {
-  id?: string;
-  name: string;
-  category: string;
-  date_created?: string;
-  description: string;
-  exercises: IExercise[];
-}
-
-export interface IDropdownOption {
-  id: string;
-  name: string;
+export interface IWorkoutExercise {
+  exercise: IExercise;
+  executionInfo: string;
 }
 
 export interface IExerciseFilters {
@@ -40,4 +39,14 @@ export interface IExerciseFilters {
   category: number | null;
   difficulty: number | null;
   muscle: number | null;
+}
+
+// ########## Workout ##########
+export interface IWorkout {
+  id?: string;
+  name: string;
+  category: string;
+  date_created?: string;
+  description: string;
+  exercises: IExercise[];
 }

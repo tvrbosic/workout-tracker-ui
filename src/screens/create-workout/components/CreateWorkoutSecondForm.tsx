@@ -1,16 +1,17 @@
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import {
   Stack,
-  FormLabel,
+  Heading,
   FormControl,
-  Input,
   Flex,
   Button,
   FormErrorMessage,
+  Divider,
 } from '@chakra-ui/react';
 import { useCreateWorkoutContext, CreateWorkoutActionTypes } from 'context/CreateWorkoutContext';
 import { IWorkout } from 'ts/definitions';
 import SearchExercises from 'screens/create-workout/components/SearchExercises';
+import WorkoutExercisesList from 'screens/create-workout/components/WorkoutExercisesList';
 
 interface ICreateWorkoutSecondFormProps {
   previousStep: () => void;
@@ -21,6 +22,7 @@ export default function CreateWorkoutSecondForm({ previousStep }: ICreateWorkout
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors },
   } = useForm<IWorkout>();
 
@@ -32,18 +34,41 @@ export default function CreateWorkoutSecondForm({ previousStep }: ICreateWorkout
 
   return (
     <form onSubmit={handleSubmit(saveData)}>
-      <Stack spacing={4} color={'green.300'}>
+      <Stack spacing={8} color={'green.300'}>
+        <Heading size={'lg'}>Browse Exercises</Heading>
         <SearchExercises />
-        <FormControl isInvalid={!!errors.name}>
-          <FormLabel htmlFor="name">Name</FormLabel>
-          <Input
-            type="text"
-            variant="filled"
-            {...register('name', {
-              required: 'Name field must not be empty!',
-            })}
+
+        <Heading size={'lg'}>Added Exercises</Heading>
+        <FormControl isInvalid={!!errors.exercises}>
+          <Controller
+            control={control}
+            name="exercises"
+            rules={{ required: 'Workout exercises must not be empty!' }}
+            render={({ field }) => (
+              <WorkoutExercisesList
+                overflow={'auto'}
+                color={'gray.100'}
+                bgColor={'whiteAlpha.100'}
+                borderRadius={'md'}
+                minHeight={'12rem'}
+                sx={{
+                  '&::-webkit-scrollbar': {
+                    width: '8px',
+                  },
+                  '&::-webkit-scrollbar-track': {
+                    width: '8px',
+                    background: 'whiteAlpha.200',
+                  },
+                  '&::-webkit-scrollbar-thumb': {
+                    background: 'green.500',
+                    borderRadius: '24px',
+                  },
+                }}
+                workoutExercises={[]}
+              />
+            )}
           />
-          <FormErrorMessage>{errors.name && errors.name.message}</FormErrorMessage>
+          <FormErrorMessage>{errors.category && errors.category.message}</FormErrorMessage>
         </FormControl>
 
         <Flex justifyContent={'space-between'}>
