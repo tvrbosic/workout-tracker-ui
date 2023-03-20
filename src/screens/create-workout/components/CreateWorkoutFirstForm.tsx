@@ -12,7 +12,7 @@ import {
 } from '@chakra-ui/react';
 import { useQuery } from 'react-query';
 
-import { IDropdownOption, IWorkout } from 'ts/definitions';
+import { IBasicEntity, IWorkout } from 'ts/definitions';
 import { useCreateWorkoutContext, CreateWorkoutActionTypes } from 'context/CreateWorkoutContext';
 import { useApiContext } from 'context/ApiContext';
 import DropdownMenu from 'components/DropdownMenu';
@@ -67,7 +67,7 @@ export default function CreateWorkoutFirstForm({ nextStep }: ICreateWorkoutFirst
                 placeholder="Select type"
                 options={categoriesQuery.data}
                 onValueChange={(option) => field.onChange(option)}
-                preselectedValue={field.value as unknown as IDropdownOption}
+                preselectedValue={field.value as unknown as IBasicEntity}
                 isLoading={!categoriesQuery.isSuccess}
                 width={'100%'}
               />

@@ -3,7 +3,7 @@ import { useQuery } from 'react-query';
 import { Grid, GridItem } from '@chakra-ui/react';
 
 import { useApiContext } from 'context/ApiContext';
-import { IExerciseFilters, IDropdownOption } from 'ts/definitions';
+import { IExerciseFilters, IBasicEntity } from 'ts/definitions';
 import SearchInput from 'components/SearchInput';
 import DropdownMenu from 'components/DropdownMenu';
 import ExerciseList from 'screens/create-workout/components/ExercisesList';
@@ -75,15 +75,15 @@ function SearchExercises() {
     dispatch({ type: ExerciseFilterActionTypes.NAME_FILTER, payload: searchValue });
   };
 
-  const categoryChangeHandler = (category: IDropdownOption) => {
+  const categoryChangeHandler = (category: IBasicEntity) => {
     dispatch({ type: ExerciseFilterActionTypes.CATEGORY_FILTER, payload: category.id });
   };
 
-  const muscleChangeHandler = (muscle: IDropdownOption) => {
+  const muscleChangeHandler = (muscle: IBasicEntity) => {
     dispatch({ type: ExerciseFilterActionTypes.MUSCLE_FILTER, payload: muscle.id });
   };
 
-  const difficultyChangeHandler = (difficulty: IDropdownOption) => {
+  const difficultyChangeHandler = (difficulty: IBasicEntity) => {
     dispatch({ type: ExerciseFilterActionTypes.DIFFICULTY_FILTER, payload: difficulty.id });
   };
 

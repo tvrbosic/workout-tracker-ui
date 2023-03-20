@@ -4,7 +4,7 @@ import { IWorkout } from 'ts/definitions';
 
 export enum CreateWorkoutActionTypes {
   UPDATE_GENERAL_DATA = 'GENERAL_DATA',
-  UPDATE_EXERCISES = 'EXERCISES',
+  ADD_EXERCISE = 'ADD_EXERCISE',
 }
 
 interface ICreateWorkoutAction {
@@ -46,8 +46,8 @@ function createWorkoutReducer(state: IWorkout, action: ICreateWorkoutAction) {
         description: action.payload.description,
       };
     }
-    case CreateWorkoutActionTypes.UPDATE_EXERCISES: {
-      return { ...state, exercises: action.payload };
+    case CreateWorkoutActionTypes.ADD_EXERCISE: {
+      return { ...state, exercises: [...state.exercises, action.payload] };
     }
     default: {
       throw new Error(`Unhandled action type: ${action.type}`);

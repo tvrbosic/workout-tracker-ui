@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 import routes from 'router/routes';
 import { useApiContext } from 'context/ApiContext';
-import { IDropdownOption } from 'ts/definitions';
+import { IBasicEntity } from 'ts/definitions';
 import SearchInput from 'components/SearchInput';
 import DropdownMenu from 'components/DropdownMenu';
 import CustomDatePicker from 'components/CustomDatePicker';
@@ -18,7 +18,7 @@ function WorkoutsControlPanel() {
     staleTime: Infinity,
   });
 
-  const categoryChangeHandler = (category: IDropdownOption) => {
+  const categoryChangeHandler = (category: IBasicEntity) => {
     // TODO: implement
     console.log('categoryChangeHandler');
   };

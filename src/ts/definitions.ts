@@ -1,5 +1,5 @@
 // ########## General ##########
-export interface IDropdownOption {
+export interface IBasicEntity {
   id: string;
   name: string;
 }
@@ -25,7 +25,7 @@ export interface IExercise {
   mechanics: string | null;
   equipment: string | null;
   primary_muscle: string;
-  secondary_muscles: string[];
+  secondary_muscles: IBasicEntity[];
   instructions: string;
 }
 
@@ -48,5 +48,5 @@ export interface IWorkout {
   category: string;
   date_created?: string;
   description: string;
-  exercises: IExercise[];
+  exercises: IWorkoutExercise[];
 }

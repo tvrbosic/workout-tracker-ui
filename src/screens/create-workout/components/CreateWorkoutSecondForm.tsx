@@ -1,13 +1,5 @@
 import { useForm, Controller } from 'react-hook-form';
-import {
-  Stack,
-  Heading,
-  FormControl,
-  Flex,
-  Button,
-  FormErrorMessage,
-  Divider,
-} from '@chakra-ui/react';
+import { Stack, Heading, FormControl, Flex, Button, FormErrorMessage } from '@chakra-ui/react';
 import { useCreateWorkoutContext, CreateWorkoutActionTypes } from 'context/CreateWorkoutContext';
 import { IWorkout } from 'ts/definitions';
 import SearchExercises from 'screens/create-workout/components/SearchExercises';
@@ -64,7 +56,7 @@ export default function CreateWorkoutSecondForm({ previousStep }: ICreateWorkout
                     borderRadius: '24px',
                   },
                 }}
-                workoutExercises={[]}
+                workoutExercises={state.exercises}
               />
             )}
           />

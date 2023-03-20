@@ -10,14 +10,14 @@ import {
 } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 
-import { IDropdownOption } from 'ts/definitions';
+import { IBasicEntity } from 'ts/definitions';
 import { capitalizeFirstLetter } from 'utils/utility';
 
 interface IDropdownPropsMenu extends MenuButtonProps {
   placeholder?: string;
-  options: Array<IDropdownOption>;
-  onValueChange: (option: IDropdownOption) => void;
-  preselectedValue?: IDropdownOption;
+  options: Array<IBasicEntity>;
+  onValueChange: (option: IBasicEntity) => void;
+  preselectedValue?: IBasicEntity;
   isLoading: boolean;
 }
 
@@ -29,11 +29,11 @@ function DropdownMenu({
   isLoading,
   ...rest
 }: IDropdownPropsMenu) {
-  const [selectedOption, setSelectedOption] = useState<IDropdownOption>(
+  const [selectedOption, setSelectedOption] = useState<IBasicEntity>(
     preselectedValue || { id: '0', name: placeholder }
   );
 
-  const handleSelect = (option: IDropdownOption) => {
+  const handleSelect = (option: IBasicEntity) => {
     setSelectedOption(option);
     onValueChange(option);
   };
