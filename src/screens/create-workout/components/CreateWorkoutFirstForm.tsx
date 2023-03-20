@@ -1,6 +1,7 @@
 import { useForm, Controller } from 'react-hook-form';
 import {
   Stack,
+  Heading,
   FormLabel,
   FormControl,
   Input,
@@ -42,6 +43,7 @@ export default function CreateWorkoutFirstForm({ nextStep }: ICreateWorkoutFirst
   return (
     <form onSubmit={handleSubmit(saveData)}>
       <Stack spacing={4} color={'green.300'}>
+        <Heading size={'lg'}>Create Workout</Heading>
         <FormControl isInvalid={!!errors.name}>
           <FormLabel htmlFor="name">Name</FormLabel>
           <Input
