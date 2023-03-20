@@ -89,10 +89,7 @@ export default function CreateWorkoutFirstForm({ nextStep }: ICreateWorkoutFirst
           <FormErrorMessage>{errors.description && errors.description.message}</FormErrorMessage>
         </FormControl>
 
-        <Flex justifyContent={'space-between'}>
-          <Button isDisabled={true} width={'48%'}>
-            Back
-          </Button>
+        <Flex justifyContent={'flex-end'}>
           <Button type={'submit'} width={'48%'}>
             Next
           </Button>

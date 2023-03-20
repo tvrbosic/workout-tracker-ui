@@ -120,7 +120,7 @@ function AddExerciseModal({ exercise, isOpen, onClose }: IAddExerciseModalProps)
             </ModalBody>
 
             <ModalFooter justifyContent={'space-between'}>
-              <Button mr={3} onClick={onClose} w={'48%'}>
+              <Button mr={3} onClick={onClose} w={'48%'} variant="outline">
                 Close
               </Button>
               <Button type="submit" w={'48%'}>

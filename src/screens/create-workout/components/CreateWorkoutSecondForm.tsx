@@ -64,7 +64,7 @@ export default function CreateWorkoutSecondForm({ previousStep }: ICreateWorkout
         </FormControl>
 
         <Flex justifyContent={'space-between'}>
-          <Button onClick={previousStep} width={'48%'}>
+          <Button onClick={previousStep} width={'48%'} variant="outline">
             Back
           </Button>
 
