@@ -1,7 +1,9 @@
-import { Box, BoxProps, Flex, HStack, Icon } from '@chakra-ui/react';
+import { Box, BoxProps, Flex, HStack, Icon, useDisclosure } from '@chakra-ui/react';
 import { FiEdit, FiTrash2 } from 'react-icons/fi';
 
 import { IWorkoutExercise } from 'ts/definitions';
+import { useCreateWorkoutContext, CreateWorkoutActionTypes } from 'context/CreateWorkoutContext';
+import EditExerciseModal from 'screens/create-workout/components/AddOrEditExercise';
 
 interface IWorkoutExerciseListItemProps extends BoxProps {
   workoutExercise: IWorkoutExercise;
@@ -10,6 +12,16 @@ interface IWorkoutExerciseListItemProps extends BoxProps {
 const transition = 'all 200ms linear';
 
 function WorkoutExerciseListItem({ workoutExercise, ...rest }: IWorkoutExerciseListItemProps) {
+  const { dispatch } = useCreateWorkoutContext();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const deleteHandler = (workoutExercise: IWorkoutExercise) => {
+    dispatch({
+      type: CreateWorkoutActionTypes.DELETE_EXERCISE,
+      payload: workoutExercise.exercise.id,
+    });
+  };
+
   return (
     <Box
       py={2}
@@ -17,9 +29,16 @@ function WorkoutExerciseListItem({ workoutExercise, ...rest }: IWorkoutExerciseL
       transition={'all 200ms linear'}
       _hover={{ bgColor: 'gray.600', cursor: 'pointer' }}
     >
+      <EditExerciseModal
+        isOpen={isOpen}
+        onClose={onClose}
+        exercise={workoutExercise.exercise}
+        editMode={true}
+        executionInfo={workoutExercise.executionInfo}
+      />
+
       <Flex alignItems={'center'} justifyContent={'space-between'}>
         {`${workoutExercise.exercise.name}: ${workoutExercise.executionInfo}`}
-
         <HStack spacing={4}>
           <Icon
             as={FiEdit}
@@ -30,6 +49,7 @@ function WorkoutExerciseListItem({ workoutExercise, ...rest }: IWorkoutExerciseL
             _hover={{
               color: 'blue.400',
             }}
+            onClick={onOpen}
           />
           <Icon
             as={FiTrash2}
@@ -40,6 +60,7 @@ function WorkoutExerciseListItem({ workoutExercise, ...rest }: IWorkoutExerciseL
             _hover={{
               color: 'red.400',
             }}
+            onClick={() => deleteHandler(workoutExercise)}
           />
         </HStack>
       </Flex>

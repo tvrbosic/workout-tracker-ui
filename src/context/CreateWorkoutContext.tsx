@@ -5,6 +5,8 @@ import { IWorkout } from 'ts/definitions';
 export enum CreateWorkoutActionTypes {
   UPDATE_GENERAL_DATA = 'GENERAL_DATA',
   ADD_EXERCISE = 'ADD_EXERCISE',
+  EDIT_EXERCISE = 'EDIT_EXERCISE',
+  DELETE_EXERCISE = 'DELETE_EXERCISE',
 }
 
 interface ICreateWorkoutAction {
@@ -48,6 +50,21 @@ function createWorkoutReducer(state: IWorkout, action: ICreateWorkoutAction) {
     }
     case CreateWorkoutActionTypes.ADD_EXERCISE: {
       return { ...state, exercises: [...state.exercises, action.payload] };
+    }
+    case CreateWorkoutActionTypes.EDIT_EXERCISE: {
+      const idx = state.exercises.findIndex(
+        (workoutExercise) => workoutExercise.exercise.id === action.payload.exercise.id
+      );
+      state.exercises[idx] = action.payload;
+      return { ...state, exercises: [...state.exercises] };
+    }
+    case CreateWorkoutActionTypes.DELETE_EXERCISE: {
+      return {
+        ...state,
+        exercises: state.exercises.filter(
+          (workoutExercise) => workoutExercise.exercise.id !== action.payload
+        ),
+      };
     }
     default: {
       throw new Error(`Unhandled action type: ${action.type}`);

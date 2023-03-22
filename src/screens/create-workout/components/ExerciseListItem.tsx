@@ -2,7 +2,7 @@ import { Box, BoxProps, Flex, Icon, useDisclosure } from '@chakra-ui/react';
 import { IoMdAddCircle } from 'react-icons/io';
 
 import { IExercise } from 'ts/definitions';
-import AddExerciseModal from 'screens/create-workout/components/AddExercise';
+import AddExerciseModal from 'screens/create-workout/components/AddOrEditExercise';
 
 interface IExerciseListItemProps extends BoxProps {
   exercise: IExercise;

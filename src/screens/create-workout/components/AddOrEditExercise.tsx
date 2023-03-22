@@ -23,23 +23,40 @@ import { useCreateWorkoutContext, CreateWorkoutActionTypes } from 'context/Creat
 interface IAddExerciseModalProps {
   exercise: IExercise;
   isOpen: boolean;
+  editMode?: boolean;
+  executionInfo?: string;
   onClose: () => void;
 }
 
-function AddExerciseModal({ exercise, isOpen, onClose }: IAddExerciseModalProps) {
+function AddOrEditExerciseModal({
+  exercise,
+  isOpen,
+  editMode = false,
+  executionInfo,
+  onClose,
+}: IAddExerciseModalProps) {
   const { state, dispatch } = useCreateWorkoutContext();
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<{ executionInfo: string }>();
+  } = useForm<{ executionInfo: string }>({
+    defaultValues: executionInfo ? { executionInfo } : { executionInfo: '' },
+  });
 
   const saveExercise = (data: { executionInfo: string }) => {
-    dispatch({
-      type: CreateWorkoutActionTypes.ADD_EXERCISE,
-      payload: { exercise, executionInfo: data.executionInfo },
-    });
+    if (editMode) {
+      dispatch({
+        type: CreateWorkoutActionTypes.EDIT_EXERCISE,
+        payload: { exercise, executionInfo: data.executionInfo },
+      });
+    } else {
+      dispatch({
+        type: CreateWorkoutActionTypes.ADD_EXERCISE,
+        payload: { exercise, executionInfo: data.executionInfo },
+      });
+    }
     reset();
     onClose();
   };
@@ -124,7 +141,7 @@ function AddExerciseModal({ exercise, isOpen, onClose }: IAddExerciseModalProps)
                 Close
               </Button>
               <Button type="submit" w={'48%'}>
-                Add Exercise
+                {editMode ? 'Update Exercise' : 'Add Exercise'}
               </Button>
             </ModalFooter>
           </form>
@@ -134,4 +151,4 @@ function AddExerciseModal({ exercise, isOpen, onClose }: IAddExerciseModalProps)
   );
 }
 
-export default AddExerciseModal;
+export default AddOrEditExerciseModal;
