@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import {
   Menu,
   MenuButton,
@@ -33,10 +33,13 @@ function DropdownMenu({
     preselectedValue || { id: '0', name: placeholder }
   );
 
-  const handleSelect = (option: IBasicEntity) => {
-    setSelectedOption(option);
-    onValueChange(option);
-  };
+  const handleSelect = useCallback(
+    (option: IBasicEntity) => {
+      setSelectedOption(option);
+      onValueChange(option);
+    },
+    [onValueChange]
+  );
 
   return (
     <Menu autoSelect={true}>

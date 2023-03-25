@@ -17,7 +17,7 @@ function ExerciseListItem({ exercise, ...rest }: IExerciseListItemProps) {
       transition={'all 200ms linear'}
       _hover={{ bgColor: 'gray.600', cursor: 'pointer' }}
     >
-      <AddExerciseModal isOpen={isOpen} onClose={onClose} exercise={exercise} />
+      {isOpen && <AddExerciseModal isOpen={isOpen} onClose={onClose} exercise={exercise} />}
 
       <Flex alignItems={'center'} justifyContent={'space-between'} onClick={onOpen}>
         {exercise.name}

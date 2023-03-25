@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { Center, Box, Progress } from '@chakra-ui/react';
 
 import HeaderMarginLayout from 'components/layouts/HeaderMarginLayout';
@@ -10,15 +10,15 @@ function CreateWorkout() {
   const [step, setStep] = useState(1);
   const [progress, setProgress] = useState(50);
 
-  const previousStep = () => {
+  const previousStep = useCallback(() => {
     setStep(1);
     setProgress(50);
-  };
+  }, []);
 
-  const nextStep = () => {
+  const nextStep = useCallback(() => {
     setStep(2);
     setProgress(100);
-  };
+  }, []);
 
   return (
     <HeaderMarginLayout>

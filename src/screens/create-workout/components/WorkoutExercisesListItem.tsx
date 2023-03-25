@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import { Box, BoxProps, Flex, HStack, Icon, useDisclosure } from '@chakra-ui/react';
 import { FiEdit, FiTrash2 } from 'react-icons/fi';
 
@@ -15,12 +16,15 @@ function WorkoutExerciseListItem({ workoutExercise, ...rest }: IWorkoutExerciseL
   const { dispatch } = useCreateWorkoutContext();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const deleteHandler = (workoutExercise: IWorkoutExercise) => {
-    dispatch({
-      type: CreateWorkoutActionTypes.DELETE_EXERCISE,
-      payload: workoutExercise.exercise.id,
-    });
-  };
+  const deleteHandler = useCallback(
+    (workoutExercise: IWorkoutExercise) => {
+      dispatch({
+        type: CreateWorkoutActionTypes.DELETE_EXERCISE,
+        payload: workoutExercise.exercise.id,
+      });
+    },
+    [dispatch]
+  );
 
   return (
     <Box
@@ -29,13 +33,15 @@ function WorkoutExerciseListItem({ workoutExercise, ...rest }: IWorkoutExerciseL
       transition={'all 200ms linear'}
       _hover={{ bgColor: 'gray.600', cursor: 'pointer' }}
     >
-      <EditExerciseModal
-        isOpen={isOpen}
-        onClose={onClose}
-        exercise={workoutExercise.exercise}
-        editMode={true}
-        executionInfo={workoutExercise.executionInfo}
-      />
+      {isOpen && (
+        <EditExerciseModal
+          isOpen={isOpen}
+          onClose={onClose}
+          exercise={workoutExercise.exercise}
+          editMode={true}
+          executionInfo={workoutExercise.executionInfo}
+        />
+      )}
 
       <Flex alignItems={'center'} justifyContent={'space-between'}>
         {`${workoutExercise.exercise.name}: ${workoutExercise.executionInfo}`}

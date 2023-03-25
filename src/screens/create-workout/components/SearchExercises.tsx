@@ -1,4 +1,4 @@
-import { useReducer } from 'react';
+import { useReducer, useCallback } from 'react';
 import { useQuery } from 'react-query';
 import { Grid, GridItem } from '@chakra-ui/react';
 
@@ -71,21 +71,21 @@ function SearchExercises() {
     }
   );
 
-  const searchChangeHandler = (searchValue: string) => {
+  const searchChangeHandler = useCallback((searchValue: string) => {
     dispatch({ type: ExerciseFilterActionTypes.NAME_FILTER, payload: searchValue });
-  };
+  }, []);
 
-  const categoryChangeHandler = (category: IBasicEntity) => {
+  const categoryChangeHandler = useCallback((category: IBasicEntity) => {
     dispatch({ type: ExerciseFilterActionTypes.CATEGORY_FILTER, payload: category.id });
-  };
+  }, []);
 
-  const muscleChangeHandler = (muscle: IBasicEntity) => {
+  const muscleChangeHandler = useCallback((muscle: IBasicEntity) => {
     dispatch({ type: ExerciseFilterActionTypes.MUSCLE_FILTER, payload: muscle.id });
-  };
+  }, []);
 
-  const difficultyChangeHandler = (difficulty: IBasicEntity) => {
+  const difficultyChangeHandler = useCallback((difficulty: IBasicEntity) => {
     dispatch({ type: ExerciseFilterActionTypes.DIFFICULTY_FILTER, payload: difficulty.id });
-  };
+  }, []);
 
   return (
     <Grid
